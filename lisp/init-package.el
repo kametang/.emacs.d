@@ -6,7 +6,10 @@
 	     '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives
 	     '("melpa-stable" . "https://melpa.org/packages/") t)
+<<<<<<< HEAD
+=======
 (add-to-list 'package-pinned-packages '(cider . "melpa-stable") t)
+>>>>>>> aef5241... feat(init): first commit
 
 (package-initialize)
 
@@ -20,9 +23,17 @@
 	   (package-install 'shell-pop))))
 
 (dolist (package '(smartparens company yasnippet flycheck helm helm-swoop
+<<<<<<< HEAD
+			       irony irony-eldoc company-irony
+			       company-irony-c-headers flycheck-irony
+			       company-jedi flycheck-pyflakes
+			       monokai-theme expand-region undo-tree git-gutter
+			       markdown-mode js2-mode magit header2))
+=======
 			       irony irony-eldoc company-irony company-irony-c-headers flycheck-irony
 			       company-jedi flycheck-pyflakes
 			       monokai-theme expand-region undo-tree))
+>>>>>>> aef5241... feat(init): first commit
   (unless (package-installed-p package)
     (package-install package)))
 

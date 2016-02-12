@@ -1,12 +1,8 @@
-;; Emacs general key binding
-
-<<<<<<< HEAD
-=======
-;; Macro for global-set-key
+;; Label: key-g
 (defmacro key-g (key cmd)
   `(global-set-key (kbd ,key) ,cmd))
 
-;; xah functions
+;; Label: xah-copy-line-or-region
 (defun xah-copy-line-or-region ()
   "Copy current line, or text selection.
 When called repeatedly, append copy subsequent lines.
@@ -34,6 +30,7 @@ Version 2015-12-30"
             (message "Buffer text copied")
           (message "Text copied"))))))
 
+;; Label: xah-cut-line-or-region
 (defun xah-cut-line-or-region ()
   "Cut current line, or text selection.
 When `universal-argument' is called first, cut whole buffer (respects `narrow-to-region').
@@ -48,43 +45,14 @@ Version 2015-06-10"
                (kill-region (region-beginning) (region-end) t)
              (kill-region (line-beginning-position) (line-beginning-position 2))))))
 
->>>>>>> aef5241... feat(init): first commit
-;; Buffer Operations
-(key-g "C-w" 'kill-this-buffer)
-(key-g "C-x C-q" 'kill-emacs)
-(key-g "C-p" 'switch-to-buffer)
-<<<<<<< HEAD
+;; Label: toggle-comment
+(defun toggle-comment ()
+    "Comments or uncomments the region or the current line if there's no active region."
+    (interactive)
+    (let (beg end)
+        (if (region-active-p)
+            (setq beg (region-beginning) end (region-end))
+            (setq beg (line-beginning-position) end (line-end-position)))
+        (comment-or-uncomment-region beg end)))
 
-;; File Operations
-(key-g "C-\\" 'helm-find-files)
-(key-g "C-o" 'find-file-at-point)
-
-;; Content Operations
-(key-g "C-x C-a" 'mark-whole-buffer)
-(key-g "C-x C-x" 'xah-cut-line-or-region)
-(key-g "C-x C-c" 'xah-copy-line-or-region)
-(key-g "C-x C-v" 'yank)
-(key-g "C-x C-/" 'toggle-comment)
-(key-g "C-g" 'goto-line)
-
-;; Quick Open
-(key-g "M-/" '(lambda ()
-		(interactive)
-		(find-file user-init-file)))
-
-;; Hide/Show Toggle
-(key-g "M-q" 'hs-toggle-hiding)
-
-;; Other window
-(key-g "<C-escape>" 'delete-other-windows)
-(key-g "<C-next>" 'other-window)
-=======
-(key-g "C-\\" 'helm-find-files)
-
-;; Content Operations
-(key-g "C-x C-x" 'xah-cut-line-or-region)
-(key-g "C-x C-c" 'xah-copy-line-or-region)
-(key-g "C-x C-v" 'yank)
->>>>>>> aef5241... feat(init): first commit
-
-(provide 'init-key)
+(provide 'init-key-func)
