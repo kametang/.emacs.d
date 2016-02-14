@@ -41,12 +41,8 @@
     (set-face-attribute
      'default nil :font "Input 12"))
 
-<<<<<<< HEAD
 ;; Set folding
 (add-hook 'find-file-hook '(lambda()
 			     (hs-minor-mode t)
 			     (hs-hide-all)))
-	  
-=======
->>>>>>> aef5241... feat(init): first commit
 (provide 'init-settings)
