@@ -21,7 +21,7 @@
 ;; Set Auto-fill mode
 (setq-default fill-column 79)
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
-(add-hook 'prog-mode-hook 'turn-on-auto-fill)
+;;(add-hook 'prog-mode-hook 'turn-on-auto-fill)
 
 ;; Show parens
 (show-paren-mode 1)

@@ -6,6 +6,9 @@
 
 (cond ((eq system-type 'windows-nt)
        (key-g "<C-return>" 'powershell))
-      (t (key-g "<C-return>" 'shell-pop)))
+      (t (progn
+	   (require 'shell-pop)
+	   (key-g "<C-return>" 'shell-pop)
+	   (setq shell-pop-window-position "full"))))
 
 (provide 'init-shell)
