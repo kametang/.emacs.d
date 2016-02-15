@@ -29,4 +29,16 @@
 (key-g "<C-escape>" 'delete-other-windows)
 (key-g "<C-next>" 'other-window)
 
+;; Remapping for tty
+(key-g "<select>" 'move-end-of-line)
+(key-g "<M-right>" 'forward-word)
+(key-g "<M-left>" 'backward-word)
+
+;; Expand Region
+(if (package-installed-p 'expand-region)
+    (progn
+      (require 'expand-region)
+      (key-g "C-=" 'er/expand-region)
+      (key-g "M-=" 'er/expand-region)))
+
 (provide 'init-key)

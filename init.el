@@ -25,6 +25,9 @@
 ;; Comment Setting
 (require 'init-comment)
 
+;; Format Settings
+(require 'init-format)
+
 ;; Emacs general settings
 (require 'init-settings)
 

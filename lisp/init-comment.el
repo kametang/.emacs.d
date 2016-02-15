@@ -1,4 +1,3 @@
-
 ;; C comment
 (defun my-prettify-c-block-comment (orig-fun &rest args)
   (let* ((first-comment-line (looking-back "/\\*\\s-*.*"))
@@ -20,7 +19,8 @@
   ;; Ensure one space between the asterisk and the comment
   (when (not (looking-back " "))
     (insert " ")))
-(advice-add 'c-indent-new-comment-line :around #'my-prettify-c-block-comment)
+(if (and (>= emacs-major-version 24) (>= emacs-minor-version 4))
+    (advice-add 'c-indent-new-comment-line :around #'my-prettify-c-block-comment))
 (key-g "<M-return>" 'comment-indent-new-line)
 
 (provide 'init-comment)
