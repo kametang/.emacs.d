@@ -1,5 +1,6 @@
-;; Package Intstall Tools
-
+;;; Package --- Summery
+;;; Commentary:
+;;; Code:
 (require 'package)
 
 (add-to-list 'package-archives
@@ -37,4 +38,6 @@
     (progn
       (package-install 'company-jedi)
       (jedi:install-server)))
+
 (provide 'init-package)
+;;; init-package.el ends here
