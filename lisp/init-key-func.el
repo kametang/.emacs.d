@@ -55,4 +55,12 @@ Version 2015-06-10"
             (setq beg (line-beginning-position) end (line-end-position)))
         (comment-or-uncomment-region beg end)))
 
+(defun insert-date ()
+  (interactive)
+  (insert (format-time-string "%Y/%M/%d" (current-time))))
+
+(defun insert-time ()
+  (interactive)
+  (insert (format-time-string "%H:%m:%S" (current-time))))
+
 (provide 'init-key-func)

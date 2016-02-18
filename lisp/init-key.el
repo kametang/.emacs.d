@@ -16,6 +16,7 @@
 (key-g "C-x C-v" 'yank)
 (key-g "C-x C-/" 'toggle-comment)
 (key-g "C-g" 'goto-line)
+(key-g "RET" 'newline-and-indent)
 
 ;; Quick Open
 (key-g "M-/" '(lambda ()
@@ -28,11 +29,18 @@
 ;; Other window
 (key-g "<C-escape>" 'delete-other-windows)
 (key-g "<C-next>" 'other-window)
+(key-g "<M-next>" 'other-window)
+
+;; Date/Time Insert
+(key-g "C-c C-d" 'insert-date)
+(key-g "C-c C-t" 'insert-time)
 
 ;; Remapping for tty
 (key-g "<select>" 'move-end-of-line)
 (key-g "<M-right>" 'forward-word)
 (key-g "<M-left>" 'backward-word)
+(key-g "<M-up>" 'backward-paragraph)
+(key-g "<M-down>" 'forward-paragraph)
 
 ;; Expand Region
 (if (package-installed-p 'expand-region)

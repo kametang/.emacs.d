@@ -2,6 +2,6 @@
 (require 'helm-config)
 (helm-mode 1)
 
-(key-g "<f12>" 'helm-swoop)
+(key-g "C-t" 'helm-swoop)
 
 (provide 'init-helm)
