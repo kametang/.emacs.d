@@ -1,2 +1,2 @@
 #!/bin/sh
-mv ext/clang-format ~/.clang-format 
+cp ext/clang-format ~/.clang-format 

@@ -1,3 +1,7 @@
+;;; package --- Summery
+;;; Commentary:
+
+;;; Code:
 ;; Setting Dir
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
@@ -28,6 +32,9 @@
 ;; Format Settings
 (require 'init-format)
 
+;; Syntax Check
+(require 'init-check)
+
 ;; Emacs general settings
 (require 'init-settings)
 
@@ -39,4 +46,7 @@
 ;; Load theme
 (load-theme 'monokai t)
 
+(global-git-gutter-mode +1)
+
 (provide 'init)
+;;; init.el ends here
