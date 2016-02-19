@@ -5,12 +5,10 @@
 					kill-buffer-query-functions))
 
 (cond ((eq system-type 'windows-nt)
-       (key-g "<C-return>" 'powershell))
+       (key-g "M-RET" 'shell))
       (t (progn
-	   (require 'shell-pop)
-           (setq shell-file-name "/bin/bash")
-	   (key-g "<C-return>" 'shell-pop)
-           (key-g "M-RET" 'shell-pop)
-	   (setq shell-pop-window-position "full"))))
+           (key-g "M-RET" (lambda ()
+                            (interactive)
+                            (term "/bin/bash"))))))
 
 (provide 'init-shell)
