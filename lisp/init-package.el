@@ -15,12 +15,12 @@
   (package-refresh-contents))
 
 ;; Install Packages
-(dolist (package '(smartparens company yasnippet flycheck helm helm-swoop
+(dolist (package '(smartparens company yasnippet flycheck ido-occur ido-yes-or-no
 			       irony irony-eldoc company-irony clang-format
 			       company-irony-c-headers flycheck-irony
 			       flycheck-pyflakes
 			       monokai-theme expand-region undo-tree git-gutter
-			       markdown-mode js2-mode header2))
+			       markdown-mode js2-mode header2 smex))
   (unless (package-installed-p package)
     (package-install package)))
 

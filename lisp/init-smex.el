@@ -1,10 +1,10 @@
-;;; init-ido.el --- 
+;;; init-smex.el --- 
 ;; 
-;; Filename: init-ido.el
+;; Filename: init-smex.el
 ;; Description: 
 ;; Author: denny
 ;; Maintainer: 
-;; Created: Fri Feb 19 14:34:26 2016 (+0800)
+;; Created: Fri Feb 19 15:25:19 2016 (+0800)
 ;; Version: 
 ;; Package-Requires: ()
 ;; Last-Updated: 
@@ -44,13 +44,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 
 ;;; Code:
+(require 'smex)
+(smex-initialize)
+(key-g "M-x" 'smex)
 
-(require 'ido)
-(ido-mode t)
-
-(require 'ido-yes-or-no )
-(ido-yes-or-no-mode 1)
-
-(provide 'init-ido)
+(provide 'init-smex)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; init-ido.el ends here
+;;; init-smex.el ends here

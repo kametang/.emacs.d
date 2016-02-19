@@ -15,6 +15,7 @@
 (key-g "C-x C-c" 'xah-copy-line-or-region)
 (key-g "C-x C-v" 'yank)
 (key-g "C-x C-/" 'toggle-comment)
+(key-g "C-s" 'ido-occur)
 (key-g "C-g" 'goto-line)
 (key-g "RET" 'newline-and-indent)
 

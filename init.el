@@ -14,6 +14,9 @@
 ;; ido Configure
 (require 'init-ido)
 
+;; smex Configure
+(require 'init-smex)
+
 ;; Company Configure
 (require 'init-ac)
 
