@@ -11,4 +11,9 @@
                             (interactive)
                             (term "/bin/bash"))))))
 
+;; Auto Close Terminal when no process
+(defadvice term-handle-exit
+  (after term-kill-buffer-on-exit activate)
+  (kill-buffer))
+
 (provide 'init-shell)
