@@ -35,12 +35,16 @@
 (key-g "C-c C-d" 'insert-date)
 (key-g "C-c C-t" 'insert-time)
 
+;; Increment Search Find Tools
+(define-key isearch-mode-map (kbd "ESC <down>") 'isearch-repeat-forward)
+(define-key isearch-mode-map (kbd "ESC <up>") 'isearch-repeat-backward)
+
 ;; Remapping for tty
 (key-g "<select>" 'move-end-of-line)
 (key-g "<M-right>" 'forward-word)
 (key-g "<M-left>" 'backward-word)
-(key-g "<M-up>" 'backward-paragraph)
-(key-g "<M-down>" 'forward-paragraph)
+(key-g "ESC <up>" 'backward-paragraph)
+(key-g "ESC <down>" 'forward-paragraph)
 
 ;; Expand Region
 (if (package-installed-p 'expand-region)
