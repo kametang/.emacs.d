@@ -6,7 +6,7 @@
 (key-g "C-p" 'switch-to-buffer)
 
 ;; File Operations
-(key-g "C-\\" 'helm-find-files)
+(key-g "C-\\" 'find-file)
 (key-g "C-o" 'find-file-at-point)
 
 ;; Content Operations

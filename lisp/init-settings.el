@@ -21,7 +21,6 @@
 ;; Set Auto-fill mode
 (setq-default fill-column 79)
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
-;;(add-hook 'prog-mode-hook 'turn-on-auto-fill)
 
 ;; Show parens
 (show-paren-mode 1)
@@ -42,7 +41,13 @@
      'default nil :font "Input 12"))
 
 ;; Set folding
-(add-hook 'find-file-hook '(lambda()
-			     (hs-minor-mode t)
-			     (hs-hide-all)))
+(defun hsmode()
+  (hs-minor-mode)
+  (hs-hide-all))
+;;; Hook
+(add-hook 'c-mode-hook 'hsmode)
+(add-hook 'c++-mode-hook 'hsmode)
+(add-hook 'emacs-lisp-mode-hook 'hsmode)
+(add-hook 'python-mode-hook 'hsmode)
+
 (provide 'init-settings)

@@ -11,8 +11,8 @@
 ;; Emacs general key functions
 (require 'init-key-func)
 
-;; Helm Configure
-(require 'init-helm)
+;; ido Configure
+(require 'init-ido)
 
 ;; Company Configure
 (require 'init-ac)
