@@ -10,19 +10,26 @@
 
 (package-initialize)
 
+(defvar-local package-updated nil)
 ;; Update Package List
 (when (not package-archive-contents)
+  (setq package-updated t)
   (package-refresh-contents))
 
 ;; Install Packages
 (dolist (package '(smartparens company yasnippet flycheck ido-occur ido-yes-or-no
 			       irony irony-eldoc company-irony clang-format
 			       company-irony-c-headers flycheck-irony
-			       flycheck-pyflakes
+			       flycheck-pyflakes company-flx
 			       monokai-theme expand-region undo-tree git-gutter
-			       markdown-mode js2-mode header2 smex))
+			       markdown-mode js2-mode header2 smex grizzl))
   (unless (package-installed-p package)
-    (package-install package)))
+    (progn
+      (when (not package-updated)
+	  ;; if not updated when this times run, refresh contents
+        (setq package-updated t)
+        (package-refresh-contents))
+      (package-install package))))
 
 ;; Magit Version Check
 (if (and (>= emacs-major-version 24) (>= emacs-minor-version 4))

@@ -9,6 +9,7 @@
 (setq company-idle-delay 0)
 (setq company-minimum-prefix-length 1)
 (setq company-transformers (quote (company-sort-by-occurrence)))
+(company-flx-mode +1)
 
 (add-hook 'c-mode 'irony-mode)
 (add-hook 'c++-mode 'irony-mode)

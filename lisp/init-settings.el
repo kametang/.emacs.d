@@ -50,4 +50,6 @@
 (add-hook 'emacs-lisp-mode-hook 'hsmode)
 (add-hook 'python-mode-hook 'hsmode)
 
+(setq enable-local-eval t)
+
 (provide 'init-settings)
