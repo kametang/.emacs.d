@@ -51,6 +51,10 @@
 (require 'ido-yes-or-no )
 (ido-yes-or-no-mode 1)
 
+(require 'ido-vertical-mode)
+(ido-vertical-mode 1)
+(setq ido-vertical-define-keys 'C-n-C-p-up-and-down)
+
 (provide 'init-ido)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init-ido.el ends here

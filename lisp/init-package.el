@@ -25,7 +25,8 @@
   (require 'irony)
   (irony-install-server))
 ;; Install Packages
-(dolist (package '(smartparens company yasnippet flycheck ido-occur ido-yes-or-no
+(dolist (package '(smartparens company yasnippet flycheck
+                               ido-occur ido-yes-or-no ido-vertical-mode
 			       irony-eldoc company-irony clang-format
 			       company-irony-c-headers flycheck-irony
 			       flycheck-pyflakes company-flx
