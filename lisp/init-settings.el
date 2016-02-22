@@ -3,6 +3,9 @@
 ;; Disable startup splash screen
 (setq inhibit-startup-screen t)
 
+;; Disable VC hooks
+(setq vc-handled-backends nil)
+
 ;; Disable backup files
 (setq
  make-backup-files nil

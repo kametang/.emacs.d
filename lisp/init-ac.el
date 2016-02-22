@@ -2,6 +2,7 @@
 
 (require 'company)
 (require 'irony)
+(require 'company-irony)
 
 (add-hook 'after-init-hook 'global-company-mode)
 
@@ -13,14 +14,13 @@
 (if (and (>= emacs-major-version 24) (>= emacs-minor-version 4))
     (company-flx-mode +1))
 
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
 (add-hook 'c-mode-hook 'irony-mode)
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'cc-mode-hook 'irony-mode)
-(add-hook 'irony-mode-hook 'irony-eldoc)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-
-(eval-after-load 'company
-  '(add-to-list 'company-backends 'company-irony))
+(add-hook 'irony-mode-hook 'irony-eldoc)
 
 (require 'jedi-core)
 (setq jedi:complete-on-dot t)

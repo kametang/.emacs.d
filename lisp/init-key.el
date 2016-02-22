@@ -49,10 +49,9 @@
 (key-g "C-x C-c" 'xah-copy-line-or-region)
 (key-g "C-x C-v" 'yank)
 (key-g "C-x C-_" 'toggle-comment)
-(key-g "C-c C-p" 'mark-paragraph)
-(key-g "C-c C-w" 'mark-word)
-(key-g "C-c C-l" 'km:mark-line)
-(key-g "C-c C-a" 'mark-active)
+(key-g "C-x C-p" 'mark-paragraph)
+(key-g "C-x C-m" 'mark-word)
+(key-g "C-x C-l" 'km:mark-line)
 (key-g "C-f" 'ido-occur)
 (key-g "C-g" 'goto-line)
 (key-g "RET" 'newline-and-indent)
@@ -68,8 +67,9 @@
 
 ;; Other window
 (key-g "<C-escape>" 'delete-other-windows)
+(key-g "ESC w" 'delete-other-windows)
 (key-g "<C-next>" 'other-window)
-(key-g "<M-next>" 'other-window)
+(key-g "ESC <next>" 'other-window)
 
 ;; Date/Time Insert
 (key-g "C-c C-d" 'insert-date)

@@ -8,8 +8,6 @@
 (add-to-list 'package-archives
 	     '("melpa-stable" . "https://melpa.org/packages/") t)
 
-(package-initialize)
-
 (defvar-local package-updated nil)
 ;; Update Package List
 (when (not package-archive-contents)
@@ -22,7 +20,6 @@
     (setq package-updated t)
     (package-refresh-contents))
   (package-install 'irony)
-  (require 'irony)
   (irony-install-server))
 ;; Install Packages
 (dolist (package '(smartparens company yasnippet flycheck
