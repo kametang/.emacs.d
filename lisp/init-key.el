@@ -24,7 +24,7 @@
 ;; Open init.el
 (defun km:config-emacs()
   (interactive)
-  (find-file 'user-init-file))
+  (find-file user-init-file))
 
 ;; Mapping Start
 (key-g "C-w" 'kill-this-buffer)
@@ -35,6 +35,7 @@
 (key-g "C-\\" 'km:find-file)
 (key-g "C-o" 'find-file-at-point)
 (key-g "C-t" 'km:find-other-file)
+(key-g "C-j" 'projectile-switch-project)
 
 ;; Content Operations
 (key-g "C-x C-a" 'mark-whole-buffer)
@@ -45,9 +46,12 @@
 (key-g "C-f" 'ido-occur)
 (key-g "C-g" 'goto-line)
 (key-g "RET" 'newline-and-indent)
+(key-g "ESC <home>" 'move-text-up)
+(key-g "ESC <select>" 'move-text-down)
 
 ;; Quick Open
 (key-g "M-/" 'km:config-emacs)
+(key-g "M-h" 'describe-bindings)
 
 ;; Hide/Show Toggle
 (key-g "M-q" 'hs-toggle-hiding)
