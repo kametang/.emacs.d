@@ -43,6 +43,9 @@
 (key-g "C-x C-c" 'xah-copy-line-or-region)
 (key-g "C-x C-v" 'yank)
 (key-g "C-x C-/" 'toggle-comment)
+(key-g "C-c C-p" 'mark-paragraph)
+(key-g "C-c C-w" 'mark-word)
+(key-g "C-c C-a" 'mark-active)
 (key-g "C-f" 'ido-occur)
 (key-g "C-g" 'goto-line)
 (key-g "RET" 'newline-and-indent)
@@ -51,7 +54,7 @@
 
 ;; Quick Open
 (key-g "M-/" 'km:config-emacs)
-(key-g "M-h" 'describe-bindings)
+(key-g "M-h" 'describe-key)
 
 ;; Hide/Show Toggle
 (key-g "M-q" 'hs-toggle-hiding)
