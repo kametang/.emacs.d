@@ -16,9 +16,17 @@
   (setq package-updated t)
   (package-refresh-contents))
 
+;; irony Install
+(when (not (package-installed-p 'irony))
+  (when (not package-updated)
+    (setq package-updated t)
+    (package-refresh-contents))
+  (package-install 'irony)
+  (require 'irony)
+  (irony-install-server))
 ;; Install Packages
 (dolist (package '(smartparens company yasnippet flycheck ido-occur ido-yes-or-no
-			       irony irony-eldoc company-irony clang-format
+			       irony-eldoc company-irony clang-format
 			       company-irony-c-headers flycheck-irony
 			       flycheck-pyflakes company-flx
 			       monokai-theme expand-region undo-tree git-gutter

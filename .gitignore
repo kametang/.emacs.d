@@ -3,3 +3,8 @@ snippets
 elpa
 auto-save-list
 *~
+\#*\#
+*.eld
+*.cache
+irony
+smex-items

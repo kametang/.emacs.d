@@ -1,13 +1,40 @@
 ;; Emacs general key binding
 
 ;; Buffer Operations
+
+;; Functions
+;; Find File
+(defun km:find-file()
+  (interactive)
+  (call-interactively (if (projectile-project-p)
+                          'projectile-find-file
+                        'ido-find-file)))
+;; Switch buffer
+(defun km:switch-buffer()
+  (interactive)
+  (call-interactively (if (projectile-project-p)
+                          'projectile-switch-to-buffer
+                        'ido-switch-buffer)))
+;; Find other file
+(defun km:find-other-file()
+  (interactive)
+  (call-interactively (if (projectile-project-p)
+                          'projectile-find-other-file
+                        'ff-find-other-file)))
+;; Open init.el
+(defun km:config-emacs()
+  (interactive)
+  (find-file 'user-init-file))
+
+;; Mapping Start
 (key-g "C-w" 'kill-this-buffer)
 (key-g "C-x C-q" 'kill-emacs)
-(key-g "C-p" 'switch-to-buffer)
+(key-g "C-p" 'km:switch-buffer)
 
 ;; File Operations
-(key-g "C-\\" 'find-file)
+(key-g "C-\\" 'km:find-file)
 (key-g "C-o" 'find-file-at-point)
+(key-g "C-t" 'km:find-other-file)
 
 ;; Content Operations
 (key-g "C-x C-a" 'mark-whole-buffer)
@@ -15,14 +42,12 @@
 (key-g "C-x C-c" 'xah-copy-line-or-region)
 (key-g "C-x C-v" 'yank)
 (key-g "C-x C-/" 'toggle-comment)
-(key-g "C-s" 'ido-occur)
+(key-g "C-f" 'ido-occur)
 (key-g "C-g" 'goto-line)
 (key-g "RET" 'newline-and-indent)
 
 ;; Quick Open
-(key-g "M-/" '(lambda ()
-		(interactive)
-		(find-file user-init-file)))
+(key-g "M-/" 'km:config-emacs)
 
 ;; Hide/Show Toggle
 (key-g "M-q" 'hs-toggle-hiding)
