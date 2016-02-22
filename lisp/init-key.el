@@ -25,6 +25,12 @@
 (defun km:config-emacs()
   (interactive)
   (find-file user-init-file))
+;; Select current line()
+(defun km:mark-line()
+  (interactive)
+  (progn
+    (move-beginning-of-line 1)
+    (mark-end-of-sentence 1)))
 
 ;; Mapping Start
 (key-g "C-w" 'kill-this-buffer)
@@ -42,9 +48,10 @@
 (key-g "C-x C-x" 'xah-cut-line-or-region)
 (key-g "C-x C-c" 'xah-copy-line-or-region)
 (key-g "C-x C-v" 'yank)
-(key-g "C-x C-/" 'toggle-comment)
+(key-g "C-x C-_" 'toggle-comment)
 (key-g "C-c C-p" 'mark-paragraph)
 (key-g "C-c C-w" 'mark-word)
+(key-g "C-c C-l" 'km:mark-line)
 (key-g "C-c C-a" 'mark-active)
 (key-g "C-f" 'ido-occur)
 (key-g "C-g" 'goto-line)
