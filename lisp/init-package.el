@@ -30,7 +30,8 @@
 			       company-irony-c-headers flycheck-irony
 			       flycheck-pyflakes company-flx
 			       monokai-theme expand-region undo-tree git-gutter
-			       markdown-mode js2-mode header2 smex grizzl move-text))
+			       markdown-mode js2-mode header2 smex grizzl move-text
+                               projectile))
   (unless (package-installed-p package)
     (progn
       (when (not package-updated)
