@@ -49,8 +49,9 @@
 (add-to-list 'same-window-regexps "\*magit: .*\*")
 (key-g "M-m" 'magit-status)
 (define-key magit-status-mode-map (kbd "g") 'kill-this-buffer)
-(if (eq system-type 'windows-nt)
-    (setenv "GIT_ASKPASS" "git-gui--askpass"))
+(when (eq system-type 'windows-nt)
+  (setenv "GIT_ASKPASS" "git-gui--askpass")
+  (setenv "SSH_ASKPASS" "git-gui--askpass"))
 
 (provide 'init-magit)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
