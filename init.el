@@ -8,8 +8,8 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-(package-initialize)
 
+(package-initialize)
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; Plugins Initialization
@@ -47,6 +47,9 @@
 
 ;; Projectile
 (require 'init-project)
+
+;; Magit
+(require 'init-magit)
 
 ;; Emacs general settings
 (require 'init-settings)

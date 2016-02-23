@@ -1,24 +1,23 @@
-;;; package --- Summary
-;;; init-check.el ---
+;;; init-magit.el --- 
 ;; 
-;; Filename: init-check.el
-;; Description:
+;; Filename: init-magit.el
+;; Description: 
 ;; Author: denny
-;; Maintainer:
-;; Created: Tue Feb 23 13:58:11 2016 (+0800)
-;; Version:
+;; Maintainer: 
+;; Created: Tue Feb 23 14:25:18 2016 (+0800)
+;; Version: 
 ;; Package-Requires: ()
-;; Last-Updated:
-;;           By:
+;; Last-Updated: 
+;;           By: 
 ;;     Update #: 0
-;; URL:
-;; Doc URL:
-;; Keywords:
-;; Compatibility:
+;; URL: 
+;; Doc URL: 
+;; Keywords: 
+;; Compatibility: 
 ;; 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 
-;;; Commentary:
+;;; Commentary: 
 ;; 
 ;; 
 ;; 
@@ -46,16 +45,11 @@
 ;; 
 ;;; Code:
 
-(require 'flycheck)
-(global-flycheck-mode)
-(require 'flycheck-irony)
+(require 'magit)
+(add-to-list 'same-window-regexps "\*magit: .*\*")
+(key-g "M-m" 'magit-status)
+(define-key magit-status-mode-map (kbd "g") 'kill-this-buffer)
 
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
-
-(setq-default flycheck-check-syntax-automatically '(save mode-enabled))
-(setq-default flycheck-highlighting-mode 'lines)
-
-(provide 'init-check)
+(provide 'init-magit)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; init-check.el ends here
+;;; init-magit.el ends here
