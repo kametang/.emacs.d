@@ -22,7 +22,7 @@
 			       flycheck-pyflakes company-flx
 			       monokai-theme expand-region undo-tree git-gutter
 			       markdown-mode js2-mode header2 smex grizzl move-text
-                               projectile))
+                   projectile highlight-symbol))
   (unless (package-installed-p package)
     (progn
       (when (not package-updated)
