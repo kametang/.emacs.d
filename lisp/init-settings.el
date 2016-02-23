@@ -48,6 +48,10 @@
 
 ;; Emacs general settings
 
+(if (eq system-type 'windows-nt)
+    ;; Windows Server Problem: http://stackoverflow.com/questions/885793/emacs-error-when-calling-server-start
+    (server-start))
+
 ;; Disable startup splash screen
 (setq inhibit-startup-screen t)
 

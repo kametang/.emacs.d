@@ -2,6 +2,54 @@
 ;; 
 ;; Filename: init-shell.el
 ;; Description: 
+;; Author: 
+;; Maintainer: 
+;; Created: 週二 二月 23 15:07:55 2016 (+0800)
+;; Version: 
+;; Package-Requires: ()
+;; Last-Updated: 
+;;           By: 
+;;     Update #: 0
+;; URL: 
+;; Doc URL: 
+;; Keywords: 
+;; Compatibility: 
+;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 
+;;; Commentary: 
+;; 
+;; 
+;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 
+;;; Change Log:
+;; 
+;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or (at
+;; your option) any later version.
+;; 
+;; This program is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+;; General Public License for more details.
+;; 
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
+;; 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 
+;;; Code:
+
+
+;;; init-shell.el --- 
+;; 
+;; Filename: init-shell.el
+;; Description: 
 ;; Author: denny
 ;; Maintainer: 
 ;; Created: Tue Feb 23 11:42:23 2016 (+0800)
@@ -53,7 +101,7 @@
 					kill-buffer-query-functions))
 
 (cond ((eq system-type 'windows-nt)
-       (key-g "M-RET" 'shell))
+       (key-g "<M-return>" 'shell))
       (t (progn
            (key-g "M-RET" (lambda ()
                             (interactive)
@@ -68,6 +116,9 @@
   (kill-buffer))
 
 (provide 'init-shell)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; init-shell.el ends here
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; init-shell.el ends here
