@@ -50,6 +50,8 @@
 (projectile-global-mode)
 (setq projectile-enable-caching t)
 (setq projectile-completion-system 'grizzl)
+(if (eq system-type 'windows-nt)
+    (setq projectile-indexing-method 'alien))
 
 (provide 'init-project)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

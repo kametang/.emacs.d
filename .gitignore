@@ -8,3 +8,5 @@ auto-save-list
 *.cache
 irony
 smex-items
+eshell
+server
