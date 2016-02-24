@@ -109,7 +109,6 @@
 (if (eq system-type 'windows-nt)
     (key-g "<M-return>" 'shell)
   (progn
-    (message "%s" system-type)
     (key-g "M-RET" 'km:term-linux)
     (key-g "<C-return>" 'km:term-linux)))
 
