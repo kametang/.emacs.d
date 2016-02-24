@@ -100,14 +100,18 @@
 (setq kill-buffer-query-functions (delq 'process-kill-buffer-query-function
 					kill-buffer-query-functions))
 
-(cond ((eq system-type 'windows-nt)
-       (key-g "<M-return>" 'shell))
-      (t (progn
-           (key-g "M-RET" (lambda ()
-                            (interactive)
-                            (if (projectile-project-p)
-                                (setq default-directory (projectile-project-root)))
-                            (ansi-term "/bin/bash"))))))
+(defun km:term-linux()
+  (interactive)
+  (if (projectile-project-p)
+      (setq default-directory (projectile-project-root)))
+  (ansi-term "/bin/bash"))
+
+(if (eq system-type 'windows-nt)
+    (key-g "<M-return>" 'shell)
+  (progn
+    (message "%s" system-type)
+    (key-g "M-RET" 'km:term-linux)
+    (key-g "<C-return>" 'km:term-linux)))
 
 ;; Auto Close Terminal when no process
 (defadvice term-handle-exit

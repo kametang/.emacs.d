@@ -30,9 +30,6 @@
 ;; Redo
 (require 'init-redo)
 
-;; Shell
-(require 'init-shell)
-
 ;; Yasnippet
 (require 'init-snippet)
 
@@ -54,9 +51,6 @@
 ;; Emacs general settings
 (require 'init-settings)
 
-;; Emacs general key bind
-(require 'init-key)
-
 ;; No settings
 
 ;; Load theme
@@ -66,6 +60,12 @@
 
 (require 'smartparens-config)
 (add-hook 'find-file-hook 'smartparens-mode)
+
+;; Emacs general key bind
+(require 'init-key)
+
+;; Shell
+(require 'init-shell)
 
 (provide 'init)
 ;;; init.el ends here
