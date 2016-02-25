@@ -95,16 +95,6 @@
     (set-face-attribute
      'default nil :font "Input 12"))
 
-;; Set folding
-(defun hsmode()
-  (hs-minor-mode)
-  (hs-hide-all))
-;;; Hook
-(add-hook 'c-mode-hook 'hsmode)
-(add-hook 'c++-mode-hook 'hsmode)
-(add-hook 'emacs-lisp-mode-hook 'hsmode)
-(add-hook 'python-mode-hook 'hsmode)
-
 (setq enable-local-eval t)
 
 (setq warning-minimum-level :emergency)

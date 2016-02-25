@@ -111,9 +111,6 @@
 (key-g "M-/" 'km:config-emacs)
 (key-g "M-h" 'describe-key)
 
-;; Hide/Show Toggle
-(key-g "M-q" 'hs-toggle-hiding)
-
 ;; Other window
 (key-g "<C-escape>" 'delete-other-windows)
 (key-g "ESC w" 'delete-other-windows)
