@@ -30,6 +30,9 @@
 ;; Redo
 (require 'init-redo)
 
+;; Trim Wspace
+(require 'init-ws)
+
 ;; Yasnippet
 (require 'init-snippet)
 

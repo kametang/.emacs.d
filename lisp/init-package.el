@@ -19,7 +19,7 @@
                    irony ido-occur ido-yes-or-no ido-vertical-mode
 			       irony-eldoc company-irony clang-format
 			       company-irony-c-headers flycheck-irony
-			       flycheck-pyflakes company-flx
+			       flycheck-pyflakes company-flx ethan-wspace
 			       monokai-theme expand-region undo-tree git-gutter
 			       markdown-mode js2-mode header2 smex grizzl move-text
                    projectile highlight-symbol))
