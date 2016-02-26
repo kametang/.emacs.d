@@ -1,48 +1,48 @@
-;;; init-settings.el --- 
-;; 
+;;; init-settings.el ---
+;;
 ;; Filename: init-settings.el
-;; Description: 
+;; Description:
 ;; Author: denny
-;; Maintainer: 
+;; Maintainer:
 ;; Created: Tue Feb 23 14:35:39 2016 (+0800)
-;; Version: 
+;; Version:
 ;; Package-Requires: ()
-;; Last-Updated: 
-;;           By: 
+;; Last-Updated:
+;;           By:
 ;;     Update #: 0
-;; URL: 
-;; Doc URL: 
-;; Keywords: 
-;; Compatibility: 
-;; 
+;; URL:
+;; Doc URL:
+;; Keywords:
+;; Compatibility:
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
-;;; Commentary: 
-;; 
-;; 
-;; 
+;;
+;;; Commentary:
+;;
+;;
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
+;;
 ;;; Change Log:
-;; 
-;; 
+;;
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
+;;
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation, either version 3 of the License, or (at
 ;; your option) any later version.
-;; 
+;;
 ;; This program is distributed in the hope that it will be useful, but
 ;; WITHOUT ANY WARRANTY; without even the implied warranty of
 ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 ;; General Public License for more details.
-;; 
+;;
 ;; You should have received a copy of the GNU General Public License
 ;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
-;; 
+;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
+;;
 ;;; Code:
 
 
@@ -63,7 +63,7 @@
  make-backup-files nil
  backup-by-copying nil
  version-control nil
- delete-old-version t
+ delete-old-versions t
  auto-save-default nil)
 
 ;; Remove new line at end of file
@@ -82,6 +82,7 @@
 
 ;; Highlight line
 (global-hl-line-mode t)
+(set-face-background 'hl-line "orange")
 
 ;; Line Number
 (global-linum-mode t)
@@ -89,7 +90,7 @@
 ;; Ruler
 (dolist (mode '(column-number-mode line-number-mode))
   (when (fboundp mode) (funcall mode t)))
-		
+
 ;; Setting English font
 (if (member "Input" (font-family-list))
     (set-face-attribute
@@ -97,6 +98,8 @@
 
 (setq enable-local-eval t)
 
+
+(require 'warnings)
 (setq warning-minimum-level :emergency)
 
 (provide 'init-settings)

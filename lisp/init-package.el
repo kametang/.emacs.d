@@ -22,7 +22,7 @@
 			       flycheck-pyflakes company-flx ethan-wspace
 			       monokai-theme expand-region undo-tree git-gutter
 			       markdown-mode js2-mode header2 smex grizzl move-text
-                   projectile highlight-symbol origami))
+                   projectile highlight-symbol origami indent-guide))
   (unless (package-installed-p package)
     (progn
       (when (not package-updated)

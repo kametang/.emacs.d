@@ -50,8 +50,8 @@
 (global-origami-mode)
 
 (key-g "M-q" 'origami-toggle-node)
-(key-g "M-S-q" 'origami-close-all-nodes)
-(key-g "C-M-q" 'origami-show-node)
+(key-g "C-q" 'origami-close-all-nodes)
+(key-g "M-f" 'origami-mode)
 
 (provide 'init-fold)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

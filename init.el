@@ -52,7 +52,10 @@
 (require 'init-magit)
 
 ;; Folding
-(require 'init-fold)
+;;(require 'init-fold)
+
+;; Indent Guide
+(require 'init-indent-guide)
 
 ;; Emacs general settings
 (require 'init-settings)
