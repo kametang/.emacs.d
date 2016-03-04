@@ -18,11 +18,11 @@
 (dolist (package '(smartparens company yasnippet flycheck
                    irony ido-occur ido-yes-or-no ido-vertical-mode
                    irony-eldoc company-irony clang-format
-                   flycheck-irony
+                   flycheck-irony sphinx-doc
                    flycheck-pyflakes company-flx ethan-wspace
                    monokai-theme expand-region undo-tree git-gutter
                    markdown-mode js2-mode header2 smex grizzl move-text
-                   projectile highlight-symbol origami indent-guide))
+                   projectile highlight-symbol indent-guide))
   (unless (package-installed-p package)
     (progn
       (when (not package-updated)

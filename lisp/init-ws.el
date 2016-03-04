@@ -46,7 +46,13 @@
 ;;; Code:
 (require 'ethan-wspace)
 (global-ethan-wspace-mode 1)
+
 (add-hook 'before-save-hook 'ethan-wspace-clean-all)
+
+(defun makefile-tabs-are-less-evil ()
+  (setq ethan-wspace-errors (remove 'tabs ethan-wspace-errors)))
+(add-hook 'makefile-mode-hook 'makefile-tabs-are-less-evil)
+
 (setq show-trailing-whitespace nil)
 
 (provide 'init-ws)

@@ -45,6 +45,11 @@
 ;;
 ;;; Code:
 
+;;Functions
+(defun km:kill-buffer-if-exist(buffer)
+(interactive)
+  (if (get-buffer buffer)
+      (kill-buffer buffer)))
 
 ;; Emacs general settings
 
@@ -54,6 +59,23 @@
 
 ;; Disable startup splash screen
 (setq inhibit-startup-screen t)
+
+;; Disable Message Buffer
+(setq message-log-max nil)
+(km:kill-buffer-if-exist "*Messages*")
+
+;; auto Close scratch
+(setq initial-scratch-message "")
+(add-hook 'after-change-major-mode-hook '(lambda()
+                                           (interactive)
+                                           (km:kill-buffer-if-exist "*scratch*")))
+(add-hook 'after-change-major-mode-hook '(lambda()
+                                           (interactive)
+                                           (km:kill-buffer-if-exist "*Warnings*")))
+
+;; Auto Close Completion Buffer
+(add-hook 'minibuffer-exit-hook '(km:kill-buffer-if-exist "*Completions*"))
+(add-hook 'minibuffer-exit-hook '(km:kill-buffer-if-exist "*Compile-log*"))
 
 ;; Disable VC hooks
 (setq vc-handled-backends nil)
