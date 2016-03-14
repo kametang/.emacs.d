@@ -70,6 +70,9 @@
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 (add-hook 'irony-mode-hook 'irony-eldoc)
 
+(if (eq system-type 'windows-nt)
+    (setq w32-pipe-read-delay 0))
+
 (require 'jedi-core)
 (setq jedi:complete-on-dot t)
 (setq jedi:use-shortcuts t)
