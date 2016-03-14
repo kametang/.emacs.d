@@ -18,7 +18,7 @@
 (dolist (package '(smartparens company yasnippet flycheck
                    irony ido-occur ido-yes-or-no ido-vertical-mode
                    irony-eldoc company-irony clang-format
-                   flycheck-irony sphinx-doc
+                   flycheck-irony sphinx-doc flx-ido
                    flycheck-pyflakes company-flx ethan-wspace
                    monokai-theme expand-region undo-tree git-gutter
                    markdown-mode js2-mode header2 smex grizzl move-text
