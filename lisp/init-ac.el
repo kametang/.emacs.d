@@ -73,6 +73,7 @@
 (require 'jedi-core)
 (setq jedi:complete-on-dot t)
 (setq jedi:use-shortcuts t)
+(setq jedi:tooltip-method 'nil)
 (add-hook 'python-mode-hook 'jedi:setup)
 (add-hook 'python-mode-hook (lambda ()
                   (add-to-list 'company-backends 'company-jedi)))
@@ -84,14 +85,14 @@
   (custom-set-faces
    `(company-tooltip
      ((t :inherit default
-         :background "black")))
+         :background "white"
+         :foreground "black")))
    `(company-tooltip-selection
      ((t :inhert font-lock-constant-face
          :foreground "black"
-         :background "orange")))
+         :background "green")))
    `(company-tooltip-common
      (( t :inherit font-lock-constant-face)))))
-
 
 (provide 'init-ac)
 

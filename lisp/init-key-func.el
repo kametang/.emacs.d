@@ -3,7 +3,7 @@
 ;; Copyright (C) 2016  denny
 
 ;; Author: denny <denny@software.elytone.com.tw>
-;; Keywords: 
+;; Keywords:
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -20,12 +20,15 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
 ;; Label: key-g
 (defmacro key-g (key cmd)
+  "Set key binding for global.
+key: kbd key
+cmd: command"
   `(global-set-key (kbd ,key) ,cmd))
 
 ;; Label: xah-copy-line-or-region

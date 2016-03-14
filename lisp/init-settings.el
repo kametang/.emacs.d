@@ -47,7 +47,6 @@
 
 ;;Functions
 (defun km:kill-buffer-if-exist(buffer)
-(interactive)
   (if (get-buffer buffer)
       (kill-buffer buffer)))
 
@@ -74,8 +73,12 @@
                                            (km:kill-buffer-if-exist "*Warnings*")))
 
 ;; Auto Close Completion Buffer
-(add-hook 'minibuffer-exit-hook '(km:kill-buffer-if-exist "*Completions*"))
-(add-hook 'minibuffer-exit-hook '(km:kill-buffer-if-exist "*Compile-log*"))
+;; (add-hook 'minibuffer-exit-hook '(lambda()
+                                   ;; (interactive)
+                                   ;; (km:kill-buffer-if-exist "*Completions*")))
+(add-hook 'minibuffer-exit-hook '(lambda()
+                                   (interactive)
+                                   (km:kill-buffer-if-exist "*Compile-log*")))
 
 ;; Disable VC hooks
 (setq vc-handled-backends nil)
