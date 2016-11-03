@@ -1,11 +1,11 @@
-;;; Package -- Summery
-;;; init-format.el ---
+;;; package --- Summary
+;;; init-elixir.el ---
 ;;
-;; Filename: init-format.el
+;; Filename: init-elixir.el
 ;; Description:
-;; Author: denny
+;; Author:
 ;; Maintainer:
-;; Created: Tue Feb 23 09:52:35 2016 (+0800)
+;; Created: 四 10月 27 08:17:30 2016 (+0800)
 ;; Version:
 ;; Package-Requires: ()
 ;; Last-Updated:
@@ -45,31 +45,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Code:
+(require 'alchemist)
+(add-hook 'elixir-mode-hook 'alchemist-mode)
 
-
-;; C format settings
-
-(setq-default c-default-style "linux")
-(setq-default c-basic-offset 4)
-(setq-default tab-width 4)
-
-(defun km:notabs ()
-  "No Tabs settings."
-  (setq-local indent-tabs-mode nil))
-
-(add-hook 'c-mode-common-hook '(lambda() (c-toggle-auto-state 1)))
-(add-hook 'c-mode-common-hook 'km:notabs)
-(add-hook 'python-mode 'km:notabs)
-
-;; Clang format
-(require 'clang-format)
-
-(setq clang-format-executable "clang-format")
-
-(add-hook 'before-save-hook (lambda ()
-                  (if (or (eq major-mode 'c-mode) (eq major-mode 'c++-mode))
-                  (clang-format-buffer))))
-(provide 'init-format)
+(provide 'init-elixir)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; init-format.el ends here
+;;; init-elixir.el ends here

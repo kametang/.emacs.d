@@ -48,9 +48,6 @@
 ;; Projectile
 (require 'init-project)
 
-;; Magit
-(require 'init-magit)
-
 ;; Folding
 (require 'init-fold)
 
@@ -60,15 +57,12 @@
 ;; Emacs general settings
 (require 'init-settings)
 
+;; Elixir
+(require 'init-elixir)
 ;; No settings
 
 ;; Load theme
 (load-theme 'monokai t)
-
-(global-git-gutter-mode +1)
-
-(require 'smartparens-config)
-(add-hook 'find-file-hook 'smartparens-mode)
 
 ;; Emacs general key bind
 (require 'init-key)
@@ -78,3 +72,19 @@
 
 (provide 'init)
 ;;; init.el ends here
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-tooltip ((t :inherit default :background "white" :foreground "black")))
+ '(company-tooltip-common ((t :inherit font-lock-constant-face)))
+ '(company-tooltip-selection ((t :inhert font-lock-constant-face :foreground "black" :background "green"))))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (vue-mode yasnippet undo-tree sphinx-doc smex smartparens projectile move-text monokai-theme markdown-mode js2-mode irony-eldoc indent-guide ido-yes-or-no ido-vertical-mode ido-occur highlight-symbol header2 grizzl git-gutter flycheck-pyflakes flycheck-irony flx-ido expand-region ethan-wspace company-jedi company-irony company-flx clang-format alchemist))))

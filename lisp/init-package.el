@@ -15,12 +15,12 @@
   (package-refresh-contents))
 
 ;; Install Packages
-(dolist (package '(smartparens company yasnippet flycheck
+(dolist (package '(company yasnippet flycheck vue-mode
                    irony ido-occur ido-yes-or-no ido-vertical-mode
                    irony-eldoc company-irony clang-format
-                   flycheck-irony sphinx-doc flx-ido
+                   flycheck-irony flx-ido alchemist
                    flycheck-pyflakes company-flx ethan-wspace
-                   monokai-theme expand-region undo-tree git-gutter
+                   monokai-theme expand-region undo-tree
                    markdown-mode js2-mode header2 smex grizzl move-text
                    projectile highlight-symbol indent-guide))
   (unless (package-installed-p package)
@@ -30,11 +30,6 @@
         (setq package-updated t)
         (package-refresh-contents))
       (package-install package))))
-
-;; Magit Version Check
-(if (and (>= emacs-major-version 24) (>= emacs-minor-version 4))
-    (if (not (package-installed-p 'magit))
-    (package-install 'magit)))
 
 ;; Comapny-jedi install
 (if (not (package-installed-p 'company-jedi))
