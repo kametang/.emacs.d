@@ -70,6 +70,9 @@
 ;; Shell
 (require 'init-shell)
 
+;; Go
+(require 'init-go)
+
 (provide 'init)
 ;;; init.el ends here
 (custom-set-faces

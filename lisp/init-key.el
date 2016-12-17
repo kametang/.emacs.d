@@ -105,7 +105,7 @@
 (key-g "C-x C-l" 'km:mark-line)
 (key-g "C-f" 'ido-occur)
 (key-g "C-g" 'goto-line)
-(key-g "RET" 'newline-and-indent)
+;; (key-g "RET" 'newline-and-indent)
 (key-g "ESC <home>" 'move-text-up)
 (key-g "ESC <select>" 'move-text-down)
 

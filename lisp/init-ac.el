@@ -48,9 +48,13 @@
 
 ;; Company Configure
 
+(with-eval-after-load 'company
+  (company-flx-mode +1))
+
 (require 'company)
 (require 'irony)
 (require 'company-irony)
+(require 'company-go)
 
 (add-hook 'after-init-hook 'global-company-mode)
 
@@ -58,11 +62,12 @@
 (setq company-idle-delay 0)
 (setq company-minimum-prefix-length 1)
 (setq company-transformers (quote (company-sort-by-occurrence)))
+(setq company-begin-commands '(self-insert-command))
+(setq company-tooltip-limit 20)
+(setq company-idle-delay 0)
+(setq company-echo-delay 0)
 
-(if (and (>= emacs-major-version 24) (>= emacs-minor-version 4))
-    (company-flx-mode +1))
-
-(eval-after-load 'company
+(eval-after-load 'cc-mode
   '(add-to-list 'company-backends 'company-irony))
 (add-hook 'c-mode-hook 'irony-mode)
 (add-hook 'c++-mode-hook 'irony-mode)

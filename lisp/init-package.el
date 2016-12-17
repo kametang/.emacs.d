@@ -22,7 +22,8 @@
                    flycheck-pyflakes company-flx ethan-wspace
                    monokai-theme expand-region undo-tree
                    markdown-mode js2-mode header2 smex grizzl move-text
-                   projectile highlight-symbol indent-guide))
+                   projectile highlight-symbol indent-guide
+                   go-mode company-go))
   (unless (package-installed-p package)
     (progn
       (when (not package-updated)
