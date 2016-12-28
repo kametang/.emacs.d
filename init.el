@@ -7,6 +7,9 @@
 (add-to-list 'package-archives '("melpa-stable" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+;; Time Evaluation
+;; (require 'eva-time)
+
 ;; General Settings
 (require 'init-general)
 (require 'init-key)
@@ -19,6 +22,8 @@
 (require 'plug-trim-space)
 (require 'plug-multi-select)
 (require 'plug-yasnippet)
+(require 'plug-jump)
+(require 'plug-ctrlp)
 
 ;; Language Support
 (require 'sup-elisp)
@@ -34,21 +39,20 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (flycheck-pyflakes flycheck-pyflasks company-jedi clang-format
-													   company-flx cargo flycheck-rust racer
-													   multiple-cursors yasnippet alchemist
-													   elisp-format indent-guide smex ido-vertical
-													   ido-yes-or-no ido-occur undo-tree
-													   company-quickhelp))))
+ '(package-selected-packages (quote (fiplr dumb-jump benchmark-init flycheck-irony flycheck-pyflakes
+					   flycheck-pyflasks company-jedi clang-format company-flx
+					   cargo flycheck-rust racer multiple-cursors yasnippet
+					   alchemist elisp-format indent-guide smex ido-vertical
+					   ido-yes-or-no ido-occur undo-tree company-quickhelp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(company-tooltip ((t :inherit default
-					   :background "white"
-					   :foreground "black")))
+		       :background "white"
+		       :foreground "black")))
  '(company-tooltip-common ((t :inherit font-lock-constant-face)))
  '(company-tooltip-selection ((t :inherit default
-								 :background "orange"
-								 :foreground "black"))))
+				 :background "orange"
+				 :foreground "black"))))

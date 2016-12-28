@@ -3,9 +3,9 @@
 
 (require-package 'alchemist)
 
-(require 'alchemist)
-
-(add-hook 'elixir-mode-hook 'alchemist-mode)
+(add-hook 'elixir-mode-hook (lambda()
+							  (require 'alchemist)
+							  (alchemist-mode)))
 
 ;; Provide
 (provide 'sup-elixir)

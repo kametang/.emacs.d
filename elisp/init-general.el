@@ -7,28 +7,21 @@
   (if (get-buffer buffer)
       (kill-buffer buffer)))
 
-;; Auto Close unnecessary buffer
-(setq-default message-log-max nil)
-(setq-default messages-buffer-max-lines nil)
-(setq initial-scratch-message "")
+;; Encoding
+(if (eq system-type 'cygwin)
+    (setq-default default-process-coding-system '(undecided-dos . undecided-dos)) t)
 
-(kill-buffer-if-exist "*Messages*")
-(add-hook 'after-change-major-mode-hook (lambda ()
-					  (interactive)
-					  (kill-buffer-if-exist "*scratch*")
-					  (kill-buffer-if-exist "*Backtrace*")))
+;; InitScreen
+(setq inhibit-splash-screen t)
+
 (add-hook 'minibuffer-exit-hook (lambda()
 				  (interactive)
 				  (kill-buffer-if-exist "*Completions*")
-				  (kill-buffer-if-exist "*Help*")
-				  (kill-buffer-if-exist "*Messages*")))
+				  (kill-buffer-if-exist "*Help*")))
 
 ;; Disable Backup Files
 (setq make-backup-files nil backup-by-copying nil version-control nil delete-old-versions t
       auto-save-default nil)
-
-;; Force new end-of-line
-(setq mode-require-final-newline t)
 
 ;; Remove additional bar
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode))

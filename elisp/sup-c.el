@@ -6,33 +6,40 @@
 (require-package 'company-irony)
 (require-package 'irony-eldoc)
 (require-package 'clang-format)
+(require-package 'flycheck-irony)
+(require-package 'yasnippet)
 
-(require 'company)
-(require 'clang-format)
 
-(eval-after-load 'c-mode '(add-to-list 'company-backends 'company-irony))
-(eval-after-load 'c++-mode '(add-to-list 'company-backends 'company-irony))
-
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-(add-hook 'irony-mode-hook 'irony-eldoc)
-(add-hook 'c-mode-hook (lambda ()
-						 (setq-local indent-tabs-mode nil)))
-(add-hook 'before-save-hook (lambda()
-							  (if (or (eq major-mode 'c-mode)
-									  (eq major-mode 'c++-mode))
-								  (clang-format-buffer))))
-
-(setq-default tab-width 4)
+(defun local:c-load()
+  (require 'company)
+  (require 'flycheck)
+  (require 'flycheck-irony)
+  (require 'yasnippet)
+  (require 'dumb-jump)
+  (add-to-list 'company-backends 'company-irony)
+  (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+  (add-hook 'irony-mode-hook 'irony-eldoc)
+  (company-mode)
+  (flycheck-mode)
+  (irony-mode)
+  (setq-local indent-tabs-mode nil)
+  (add-hook 'before-save-hook (lambda()
+				(if (or (eq major-mode 'c-mode)
+					(eq major-mode 'c++-mode))
+				    (clang-format-buffer))))
+  (yas-minor-mode)
+  (hs-minor-mode)
+  (hs-hide-all)
+  (setq tab-width 4)
+  (dumb-jump-mode))
 
 ;; Clang-Format
+(require 'clang-format)
 (setq-default clang-format-executable "clang-format")
-
 (defvar-local
   km-style
   ())
-
 (add-to-list 'km-style "BasedOnStyle: Google")
 (add-to-list 'km-style "AccessModifierOffset: 4")
 (add-to-list 'km-style "AlignAfterOpenBracket: true")
@@ -69,8 +76,14 @@
 (add-to-list 'km-style "SpacesInParentheses: false")
 (add-to-list 'km-style "SpacesInSquareBrackets: false")
 (add-to-list 'km-style "UseTab: Never")
-
 (setq-default clang-format-style (concat "{" (mapconcat 'identity km-style ",") "}"))
+
+(add-hook 'c-mode-hook 'local:c-load)
+(add-hook 'c++-mode-hook 'local:c-load)
+
+(require 'multiple-cursors)
+(define-key c-mode-map (kbd "C-d") 'mc/mark-next-like-this)
+
 
 ;; Provide
 (provide 'sup-c)

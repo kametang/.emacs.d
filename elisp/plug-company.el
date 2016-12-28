@@ -3,15 +3,10 @@
 
 ;; Install packages
 (require-package 'company)
-(require-package 'company-quickhelp)
 
 ;; Require
 (require 'company)
-(require 'company-quickhelp)
-
-;; Settings
-(add-hook 'company-mode-hook (lambda()
-			       (company-quickhelp-mode 1)))
+(require 'pos-tip)
 
 (setq company-auto-complete-chars (quote (32 95 40 41 119 46 34 36 39 60 32 47 124 33)))
 (setq company-idle-delay 0)
@@ -21,23 +16,23 @@
 (setq company-begin-commands '(self-insert-command))
 (setq company-tooltip-align-annotations t)
 
-(setq company-quickhelp-delay 0)
-
-(if (eq system-type 'window-nt)
-    (setq w32-pipe-read-delay 0))
+(when (boundp 'w32-pipe-read-delay)
+  (setq w32-pipe-read-delay 0))
+(when (boundp 'w32-pipe-buffer-size)
+  (setq w32-pipe-buffer-size (*64 1024)))
 
 ;; Color
 (let ((class '((class color)
-	       (min-color 257)))
-      (terminal-class '((class color)
-			(min-color 89))))
+			   (min-color 257)))
+	  (terminal-class '((class color)
+						(min-color 89))))
   (custom-set-faces `(company-tooltip ((t :inherit default
-					  :background "white"
-					  :foreground "black")))
-		    `(company-tooltip-selection ((t :inherit default
-						    :background "orange"
-						    :foreground "black")))
-		    `(company-tooltip-common ((t :inherit font-lock-constant-face)))))
+										  :background "white"
+										  :foreground "black")))
+					`(company-tooltip-selection ((t :inherit default
+													:background "orange"
+													:foreground "black")))
+					`(company-tooltip-common ((t :inherit font-lock-constant-face)))))
 
 ;; Export
 (provide 'plug-company)
