@@ -81,9 +81,8 @@
 (add-hook 'c-mode-hook 'local:c-load)
 (add-hook 'c++-mode-hook 'local:c-load)
 
-(require 'multiple-cursors)
-(define-key c-mode-map (kbd "C-d") 'mc/mark-next-like-this)
-
+(add-hook 'c-mode-hook (lambda()
+			 (local-set-key (kbd "RET") 'c-indent-new-comment-line)))
 
 ;; Provide
 (provide 'sup-c)

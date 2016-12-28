@@ -5,8 +5,8 @@
 
 (require 'multiple-cursors)
 
-(global-set-key (kbd "C-d") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-x C-d") 'multiple-cursors-mode)
+(global-set-key (kbd "<f3>") 'mc/mark-next-like-this)
+(global-set-key (kbd "<f4>") 'multiple-cursors-mode)
 
 ;; Provide
 (provide 'plug-multi-select)

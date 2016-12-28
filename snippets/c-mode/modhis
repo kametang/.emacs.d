@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: modhis
+# key: modhis
+# condition: 'force-in-comment
+# --
+Version ${1:1}.${2:00} - Date `(format-time-string "%Y/%m/%d")` By Denny Chang$0`(delete-forward-char 1)`
