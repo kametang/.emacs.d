@@ -6,7 +6,6 @@
 (defun local:elisp-load()
   (require 'sup-common)
   (local:common-load)
-  (require 'elisp-format)
   (add-hook 'before-save-hook (lambda()
 				(if (eq major-mode 'emacs-lisp-mode)
 				    (elisp-format-buffer)))))
