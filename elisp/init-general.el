@@ -1,15 +1,22 @@
 ;; General Settings
 (require 'func-package)
 
+;; Environment
+(set-language-environment "UTF-8")
+
 ;; Functions
 (defun kill-buffer-if-exist (buffer)
-  "Kill Buffer if it exist"
+  "Kill BUFFER if it exist."
   (if (get-buffer buffer)
       (kill-buffer buffer)))
 
 ;; Encoding
-(if (eq system-type 'cygwin)
-    (setq-default default-process-coding-system '(undecided-dos . undecided-dos)) t)
+
+(add-hook 'find-file-hook (lambda()
+			    (unless (member buffer-file-coding-system '(utf-8-unix
+									prefer-utf-8-unix))
+			      (progn (set-buffer-file-coding-system 'utf-8-unix)
+				     (save-buffer)))))
 
 ;; InitScreen
 (setq inhibit-splash-screen t)

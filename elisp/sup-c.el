@@ -1,38 +1,31 @@
 ;; C/C++
 (require 'func-package)
 
-(require-package 'company)
 (require-package 'irony)
 (require-package 'company-irony)
 (require-package 'irony-eldoc)
 (require-package 'clang-format)
 (require-package 'flycheck-irony)
-(require-package 'yasnippet)
 
 
 (defun local:c-load()
-  (require 'company)
-  (require 'flycheck)
   (require 'flycheck-irony)
-  (require 'yasnippet)
-  (require 'dumb-jump)
-  (add-to-list 'company-backends 'company-irony)
+  (require 'clang-format)
+  (require 'company-irony)
+  (require 'sup-common)
+  (local:common-load)
   (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   (add-hook 'irony-mode-hook 'irony-eldoc)
-  (company-mode)
-  (flycheck-mode)
   (irony-mode)
+  (add-to-list 'company-backends 'company-irony)
   (setq-local indent-tabs-mode nil)
   (add-hook 'before-save-hook (lambda()
 				(if (or (eq major-mode 'c-mode)
 					(eq major-mode 'c++-mode))
+				    ;; (progn (set-buffer-file-coding-system 'utf-8-unix)
 				    (clang-format-buffer))))
-  (yas-minor-mode)
-  (hs-minor-mode)
-  (hs-hide-all)
-  (setq tab-width 4)
-  (dumb-jump-mode))
+  (setq tab-width 4))
 
 ;; Clang-Format
 (require 'clang-format)
@@ -80,9 +73,6 @@
 
 (add-hook 'c-mode-hook 'local:c-load)
 (add-hook 'c++-mode-hook 'local:c-load)
-
-(add-hook 'c-mode-hook (lambda()
-			 (local-set-key (kbd "RET") 'c-indent-new-comment-line)))
 
 ;; Provide
 (provide 'sup-c)

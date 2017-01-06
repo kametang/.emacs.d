@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: eltemp
+# key: eltemp
+# --
+;; package --- Summary
+
+;;; Commentary:
+
+;;; Code:
+(require 'func-package)
+
+;;; Necessary Package Install (require-package 'xxx)
+
+;;; Work
+
+;; Provide
+(provide '`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`)
+;;; `(file-name-nondirectory (buffer-file-name))` ends here

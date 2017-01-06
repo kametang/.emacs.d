@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: appinc
+# key: appinc
+# --
+#include "app/inc/app_include.h"
