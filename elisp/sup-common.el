@@ -9,51 +9,71 @@
 (require-package 'company)
 (require-package 'flycheck)
 (require-package 'yasnippet)
-(require-package 'autopair)
 (require-package 'dumb-jump)
+(require-package 'eldoc)
+
+(require 'company)
+(require 'flycheck)
+(require 'yasnippet)
+(require 'dumb-jump)
+(require 'hideshow)
+(require 'eldoc)
+(require 'electric)
 
 ;;; Work
 
 ;; Company
 (defun common:company-load()
-  (require 'company)
-  (company-mode))
+(company-mode))
 
 ;; Flycheck
 (defun common:flycheck-load()
-  (require 'flycheck)
-  (flycheck-mode))
+(flycheck-mode))
 
 ;; Yasnippet
 (defun common:yasnippet-load()
-  (require 'yasnippet)
-  (yas-minor-mode-on))
+(yas-minor-mode))
 
 ;; Dumb Jump
 (defun common:dumb-jump-load()
-  (require 'dumb-jump)
-  (dumb-jump-mode))
+(dumb-jump-mode))
 
 ;; Fold
 (defun common:fold-load()
-  (require 'hideshow)
-  (hs-minor-mode)
-  (hs-hide-all))
+(add-hook 'hs-minor-mode-hook 'hs-hide-all)
+(hs-minor-mode))
 
 ;; Autopair
 (defun common:autopair-load()
-  (require 'autopair)
-  (autopair-mode))
+  (electric-pair-mode))
+
+;; Eldoc
+(defun common:eldoc-load()
+(eldoc-mode))
+
+(defvar local:load-list
+'((complete common:company-load)
+(snippet  common:yasnippet-load)
+(lint  common:flycheck-load)
+(fold  common:fold-load)
+(autopair  common:autopair-load)
+(jump  common:dumb-jump-load)
+(doc common:eldoc-load)))
+
+(defvar local:ll)
 
 ;; Load
-(defun local:common-load()
-  (common:company-load)
-  (common:dumb-jump-load)
-  (common:flycheck-load)
-  (common:yasnippet-load)
-  (common:fold-load)
-  (common:autopair-load))
+(defun local:common-load
+(&optional
+ignore-list)
+ "Common Load Function.  IGNORE-LIST for skip some special module."
+ (unless (listp ignore-list)
+(setq ignore-list '(empty)))
+(setq-local local:ll (copy-alist local:load-list))
+(dolist (item ignore-list)
+(assq-delete-all item local:ll))
+(dolist (kf local:ll)
+(apply (cdr kf))))
 
-;; Provide
 (provide 'sup-common)
 ;;; sup-common.el ends here

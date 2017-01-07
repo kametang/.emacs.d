@@ -1,3 +1,9 @@
+;;; package --- Summary
+
+;;; Commentary:
+
+;;; Code:
+
 ;; C/C++
 (require 'func-package)
 
@@ -7,12 +13,12 @@
 (require-package 'clang-format)
 (require-package 'flycheck-irony)
 
+(require 'sup-common)
+(require 'flycheck-irony)
+(require 'clang-format)
+(require 'company-irony)
 
 (defun local:c-load()
-  (require 'flycheck-irony)
-  (require 'clang-format)
-  (require 'company-irony)
-  (require 'sup-common)
   (local:common-load)
   (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
@@ -31,8 +37,8 @@
 (require 'clang-format)
 (setq-default clang-format-executable "clang-format")
 (defvar-local
-  km-style
-  ())
+km-style
+ ())
 (add-to-list 'km-style "BasedOnStyle: Google")
 (add-to-list 'km-style "AccessModifierOffset: 4")
 (add-to-list 'km-style "AlignAfterOpenBracket: true")
@@ -76,3 +82,4 @@
 
 ;; Provide
 (provide 'sup-c)
+;;; sup-c.el ends here

@@ -1,10 +1,17 @@
+;;; package --- Summary
+
+;;; Commentary:
+
+;;; Code:
+
 ;; Elisp Support
 (require 'func-package)
 
 (require-package 'elisp-format)
 
+(require 'sup-common)
+
 (defun local:elisp-load()
-  (require 'sup-common)
   (local:common-load)
   (add-hook 'before-save-hook (lambda()
 				(if (eq major-mode 'emacs-lisp-mode)
@@ -14,3 +21,4 @@
 
 ;; Provide
 (provide 'sup-elisp)
+;;; sup-elisp.el ends here
