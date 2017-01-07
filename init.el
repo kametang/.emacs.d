@@ -7,7 +7,7 @@
 ;;; Custom File
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (unless (file-exists-p custom-file)
-(with-temp-buffer (write-file custom-file)))
+  (with-temp-buffer (write-file custom-file)))
 (load custom-file)
 
 ;; Basic Settings
@@ -36,6 +36,7 @@
 (require 'plug-yasnippet)
 (require 'plug-jump)
 (require 'plug-ctrlp)
+(require 'plug-doxy)
 
 ;; Language Support
 (require 'sup-common)
@@ -45,6 +46,7 @@
 (require 'sup-c)
 (require 'sup-python)
 (require 'sup-html)
+
 
 ;; Provide
 (provide 'init)

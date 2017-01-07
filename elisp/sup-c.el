@@ -17,6 +17,7 @@
 (require 'flycheck-irony)
 (require 'clang-format)
 (require 'company-irony)
+(require 'doxymacs)
 
 (defun local:c-load()
   (local:common-load)
@@ -29,9 +30,10 @@
   (add-hook 'before-save-hook (lambda()
 				(if (or (eq major-mode 'c-mode)
 					(eq major-mode 'c++-mode))
-				    ;; (progn (set-buffer-file-coding-system 'utf-8-unix)
 				    (clang-format-buffer))))
-  (setq tab-width 4))
+  (setq-local tab-width 4)
+  (setq doxymacs-doxygen-style "C++"))
+
 
 ;; Clang-Format
 (require 'clang-format)

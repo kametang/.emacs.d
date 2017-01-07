@@ -13,12 +13,13 @@
 
 (defun local:elisp-load()
   (local:common-load)
+  (add-hook 'hs-show-hook (indent-region (point-min)
+					 (point-max)))
   (add-hook 'before-save-hook (lambda()
 				(if (eq major-mode 'emacs-lisp-mode)
 				    (elisp-format-buffer)))))
 
 (add-hook 'emacs-lisp-mode-hook 'local:elisp-load)
-
 ;; Provide
 (provide 'sup-elisp)
 ;;; sup-elisp.el ends here

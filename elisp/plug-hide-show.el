@@ -1,3 +1,9 @@
+;;; package --- Summary
+
+;;; Commentary:
+
+;;; Code:
+
 ;; Hide Show
 (require 'func-package)
 
@@ -9,3 +15,4 @@
 
 ;; Provide
 (provide 'plug-hide-show)
+;;; plug-hide-show.el ends here
