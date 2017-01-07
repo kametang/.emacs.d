@@ -17,7 +17,7 @@
   (require 'eldoc)
   (require 'flycheck-rust)
   (require 'cargo)
-  (setq-default racer-cmd "~/.cargo/bin/racer")
+  (setq-default racer-cmd (expand-file-name "../.cargo/bin/racer" user-emacs-directory))
   (setq-default racer-rust-src-path (expand-file-name "rust/src" user-emacs-directory))
   (setq-default rust-format-on-save t)
   (racer-mode)

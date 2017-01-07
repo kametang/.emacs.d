@@ -6,7 +6,8 @@
 
 ;; Require
 (require 'company)
-(require 'pos-tip)
+(if (eq system-type 'cygwin)
+    (require 'pos-tip))
 
 (setq company-auto-complete-chars (quote (32 95 40 41 119 46 34 36 39 60 32 47 124 33)))
 (setq company-idle-delay 0)

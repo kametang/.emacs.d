@@ -5,9 +5,11 @@
 
 (require 'dumb-jump)
 
-(global-set-key (kbd "C-.") 'dumb-jump-go)
-(global-set-key (kbd "C-,") 'dumb-jump-back)
-(global-set-key (kbd "C-_") 'dumb-jump-quick-look)
+(setq dumb-jump-rg-cmd (expand-file-name "../.cargo/bin/rg" user-emacs-directory))
+
+(global-set-key (kbd "M-.") 'dumb-jump-go)
+(global-set-key (kbd "M-,") 'dumb-jump-baxwck)
+(global-set-key (kbd "M-/") 'dumb-jump-quick-look)
 
 ;; Provide
 (provide 'plug-jump)
