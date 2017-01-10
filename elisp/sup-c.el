@@ -32,6 +32,7 @@
 					(eq major-mode 'c++-mode))
 				    (clang-format-buffer))))
   (setq-local tab-width 4)
+  (local-set-key (kbd "<C-return>") 'c-indent-new-comment-line)
   (setq doxymacs-doxygen-style "C++"))
 
 
@@ -39,8 +40,8 @@
 (require 'clang-format)
 (setq-default clang-format-executable "clang-format")
 (defvar-local
-km-style
- ())
+  km-style
+  ())
 (add-to-list 'km-style "BasedOnStyle: Google")
 (add-to-list 'km-style "AccessModifierOffset: 4")
 (add-to-list 'km-style "AlignAfterOpenBracket: true")

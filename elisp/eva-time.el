@@ -1,3 +1,9 @@
+;;; package --- Summary
+
+;;; Commentary:
+
+;;; Code:
+
 ;; Evaluation Time
 (require 'func-package)
 
@@ -9,3 +15,4 @@
 
 ;; Provide
 (provide 'eva-time)
+;;; eva-time.el ends here

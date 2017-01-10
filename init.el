@@ -8,7 +8,6 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (unless (file-exists-p custom-file)
   (with-temp-buffer (write-file custom-file)))
-(load custom-file)
 
 ;; Basic Settings
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
@@ -32,7 +31,7 @@
 (require 'plug-flycheck)
 (require 'plug-hide-show)
 (require 'plug-trim-space)
-(require 'plug-multi-select)
+(require 'plug-anzu)
 (require 'plug-yasnippet)
 (require 'plug-jump)
 (require 'plug-ctrlp)
@@ -46,7 +45,6 @@
 (require 'sup-c)
 (require 'sup-python)
 (require 'sup-html)
-
 
 ;; Provide
 (provide 'init)

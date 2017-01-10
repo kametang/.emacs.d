@@ -7,4 +7,3 @@ git submodule update
 cd doxymacs-code
 ./bootstrap
 ./configure
-make

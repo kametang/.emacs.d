@@ -1,3 +1,9 @@
+;;; package --- Summary
+
+;;; Commentary:
+
+;;; Code:
+
 ;; Key
 (require 'func-package)
 
@@ -96,6 +102,7 @@
 
 ;; Search
 (require-package 'ido-occur)
+(require 'ido-occur)
 (global-set-key (kbd "C-f") 'ido-occur)
 (global-set-key (kbd "C-p") 'ido-switch-buffer)
 
@@ -107,3 +114,4 @@
 
 ;; Provide
 (provide 'init-key)
+;;; init-key.el ends here

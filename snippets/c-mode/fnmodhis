@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: fnmodhis
+# key: fnmodhis
+# type: command
+# condition: 'force-in-comment
+# --
+(let* ((snippet-text (format "Date %s by DennyChang - ${1:description}" (format-time-string "%Y/%m/%d"))))
+  (yas-expand-snippet snippet-text))

@@ -12,3 +12,4 @@ server
 ido.last
 ac-comphist.dat
 .mc-lists.el
+custom.el
