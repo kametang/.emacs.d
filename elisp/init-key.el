@@ -21,6 +21,12 @@
 		  (interactive)
 		  (find-file user-init-file)))
 
+;; Encoding Fix
+(global-set-key (kbd "<f10>")
+		(lambda()
+		  (interactive)
+		  (set-buffer-file-coding-system 'utf-8-unix)))
+
 ;; Map Custom Key
 (global-set-key (kbd "C-x C-q") 'kill-emacs)
 

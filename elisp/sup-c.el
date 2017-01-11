@@ -20,7 +20,7 @@
 (require 'doxymacs)
 
 (defun local:c-load()
-  (local:common-load)
+  (local:common-load '(doc))
   (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   (add-hook 'irony-mode-hook 'irony-eldoc)
@@ -61,7 +61,7 @@
 (add-to-list 'km-style "AlwaysBreakBeforeMultilineStrings: false")
 (add-to-list 'km-style "BinPackArguments: true")
 (add-to-list 'km-style "BinPackParameters: true")
-(add-to-list 'km-style "ColumnLimit: 100")
+(add-to-list 'km-style "ColumnLimit: 90")
 (add-to-list 'km-style "ContinuationIndentWidth: 4")
 (add-to-list 'km-style "DerivePointerAlignment: true")
 (add-to-list 'km-style "IndentCaseLabels: true")

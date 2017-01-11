@@ -16,14 +16,6 @@
   (if (get-buffer buffer)
       (kill-buffer buffer)))
 
-;; Encoding
-
-(add-hook 'find-file-hook (lambda()
-			    (unless (member buffer-file-coding-system '(utf-8-unix
-									prefer-utf-8-unix))
-			      (progn (set-buffer-file-coding-system 'utf-8-unix)
-				     (save-buffer)))))
-
 ;; InitScreen
 (setq inhibit-splash-screen t)
 
