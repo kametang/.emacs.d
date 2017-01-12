@@ -11,18 +11,9 @@
 (set-language-environment "UTF-8")
 
 ;; Functions
-(defun kill-buffer-if-exist (buffer)
-  "Kill BUFFER if it exist."
-  (if (get-buffer buffer)
-      (kill-buffer buffer)))
-
-;; InitScreen
 (setq inhibit-splash-screen t)
-
-(add-hook 'minibuffer-exit-hook (lambda()
-				  (interactive)
-				  (kill-buffer-if-exist "*Completions*")
-				  (kill-buffer-if-exist "*Help*")))
+(setq inhibit-startup-message t)
+(setq inhibit-startup-echo-area-message t)
 
 ;; Disable Backup Files
 (setq make-backup-files nil backup-by-copying nil version-control nil delete-old-versions t
@@ -34,11 +25,15 @@
     (funcall mode -1)))
 
 ;; Show parens
-(show-paren-mode 1)
+(require-package 'mic-paren)
+(require 'mic-paren)
+(paren-activate)
+(setq paren-highlight-offscreen t)
 
 ;; Highlight Line
 (global-hl-line-mode t)
-(set-face-background 'hl-line "grey")
+(set-face-background 'hl-line "white")
+(set-face-foreground 'hl-line "black")
 
 ;; Line Number
 (global-linum-mode t)
@@ -46,21 +41,6 @@
 ;; Ruler
 (column-number-mode t)
 (line-number-mode t)
-
-;; Suppress Warning
-(require 'warnings)
-(setq warning-minimum-level
-      :emergency)
-
-;; Indent Guide
-(require-package 'indent-guide)
-(require 'indent-guide)
-(indent-guide-global-mode)
-
-(set-face-foreground 'indent-guide-face "pink")
-(set-face-background 'indent-guide-face "black")
-
-(setq enable-local-eval t)
 
 ;; Provide
 (provide 'init-general)

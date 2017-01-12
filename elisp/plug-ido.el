@@ -5,10 +5,6 @@
 (ido-mode t)
 (ido-everywhere 1)
 
-(require-package 'ido-yes-or-no)
-(require 'ido-yes-or-no)
-(ido-yes-or-no-mode 1)
-
 (require-package 'ido-vertical-mode)
 (require 'ido-vertical-mode)
 (ido-vertical-mode 1)

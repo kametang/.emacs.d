@@ -6,14 +6,12 @@
 
 ;;; Custom File
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(unless (file-exists-p custom-file)
-  (with-temp-buffer (write-file custom-file)))
 
 ;; Basic Settings
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
 
-(require 'package)
 ;; Package Settings
+(require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "https://melpa.org/packages/") t)
 (package-initialize)
@@ -24,6 +22,7 @@
 ;; General Settings
 (require 'init-general)
 (require 'init-key)
+(require 'init-theme)
 
 ;; Package Settings
 (require 'plug-company)
@@ -32,7 +31,6 @@
 (require 'plug-hide-show)
 (require 'plug-trim-space)
 (require 'plug-anzu)
-(require 'plug-yasnippet)
 (require 'plug-jump)
 (require 'plug-ctrlp)
 (require 'plug-doxy)
