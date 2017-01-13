@@ -107,9 +107,10 @@
 							(region-end))))))
 
 ;; Search
-(require-package 'ido-occur)
-(require 'ido-occur)
-(global-set-key (kbd "C-f") 'ido-occur)
+(require-package 'popup-imenu)
+(require 'popup-imenu)
+(global-set-key (kbd "C-f") 'popup-imenu)
+(define-key popup-isearch-keymap (kbd "C-f") 'popup-isearch-cancel)
 (global-set-key (kbd "C-p") 'ido-switch-buffer)
 
 ;; Smex

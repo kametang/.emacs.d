@@ -34,8 +34,7 @@
 
 ;; Yasnippet
 (defun common:yasnippet-load()
-  (yas-minor-mode)
-  (yas-reload-all))
+  (yas-minor-mode))
 
 ;; Dumb Jump
 (defun common:dumb-jump-load()

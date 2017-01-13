@@ -2,6 +2,10 @@
 # name: modhis
 # key: modhis
 # condition: 'force-in-comment
+# type: command
 # --
-Version ${1:1}.${2:00} - Date `(format-time-string "%Y/%m/%d")` By Denny Chang
- *     - $0`(delete-forward-char 1)`
+(let* ((snippet-text ""))
+  (setq snippet-text (format " * Version ${1:1}.${2:00} - Date %s By Denny Chang\n"
+			     (format-time-string "%Y/%m/%d")))
+  (setq snippet-text (concat snippet-text " *\t\t- $0"))
+  (yas-expand-snippet snippet-text))

@@ -32,6 +32,7 @@
 (require 'plug-trim-space)
 (require 'plug-anzu)
 (require 'plug-jump)
+(require 'plug-yasnippet)
 (require 'plug-ctrlp)
 (require 'plug-doxy)
 
