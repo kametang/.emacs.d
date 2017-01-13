@@ -44,6 +44,7 @@
 (require 'sup-c)
 (require 'sup-python)
 (require 'sup-html)
+(require 'sup-go)
 
 ;; Provide
 (provide 'init)
