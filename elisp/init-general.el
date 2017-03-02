@@ -42,6 +42,9 @@
 (column-number-mode t)
 (line-number-mode t)
 
+;; Disable cache
+(setq cache-long-scans nil)
+
 ;; Provide
 (provide 'init-general)
 ;;; init-general.el ends here
