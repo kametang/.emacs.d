@@ -24,16 +24,16 @@
 
 ;; Color
 (let ((class '((class color)
-			   (min-color 257)))
-	  (terminal-class '((class color)
-						(min-color 89))))
+	       (min-color 257)))
+      (terminal-class '((class color)
+			(min-color 89))))
   (custom-set-faces `(company-tooltip ((t :inherit default
-										  :background "white"
-										  :foreground "black")))
-					`(company-tooltip-selection ((t :inherit default
-													:background "orange"
-													:foreground "black")))
-					`(company-tooltip-common ((t :inherit font-lock-constant-face)))))
+					  :background "white"
+					  :foreground "black")))
+		    `(company-tooltip-selection ((t :inherit default
+						    :background "orange"
+						    :foreground "black")))
+		    `(company-tooltip-common ((t :inherit font-lock-constant-face)))))
 
 ;; Export
 (provide 'plug-company)

@@ -25,6 +25,8 @@
 (require 'init-theme)
 
 ;; Package Settings
+(require 'plug-org)
+(require 'plug-window-number)
 (require 'plug-company)
 (require 'plug-ido)
 (require 'plug-flycheck)

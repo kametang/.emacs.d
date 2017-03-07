@@ -20,7 +20,7 @@
 
 (global-set-key (kbd "<f3>") 'dumb-jump-go)
 (global-set-key (kbd "<f4>") 'dumb-jump-back)
-(global-set-key (kbd "C-\\") 'dumb-jump-quick-look)
+;; (global-set-key (kbd "C-\\") 'dumb-jump-quick-look)
 
 ;; Provide
 (provide 'plug-jump)
