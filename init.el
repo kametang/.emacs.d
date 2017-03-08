@@ -25,18 +25,17 @@
 (require 'init-theme)
 
 ;; Package Settings
+(require 'plug-helm)
 (require 'plug-org)
 (require 'plug-window-number)
-(require 'plug-company)
-(require 'plug-ido)
 (require 'plug-flycheck)
 (require 'plug-hide-show)
 (require 'plug-trim-space)
 (require 'plug-anzu)
 (require 'plug-jump)
 (require 'plug-yasnippet)
-(require 'plug-ctrlp)
 (require 'plug-doxy)
+(require 'plug-company)
 
 ;; Language Support
 (require 'sup-common)

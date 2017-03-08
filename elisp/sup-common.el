@@ -6,14 +6,12 @@
 (require 'func-package)
 
 ;;; Necessary Package Install (require-package 'xxx)
-(require-package 'company)
 (require-package 'flycheck)
 (require-package 'yasnippet)
 (require-package 'dumb-jump)
 (require-package 'eldoc)
 (require-package 'anzu)
 
-(require 'company)
 (require 'flycheck)
 (require 'yasnippet)
 (require 'dumb-jump)
@@ -23,10 +21,6 @@
 (require 'anzu)
 
 ;;; Work
-
-;; Company
-(defun common:company-load()
-  (company-mode))
 
 ;; Flycheck
 (defun common:flycheck-load()
@@ -57,8 +51,7 @@
   (anzu-mode +1))
 
 (defvar local:load-list
-  '((complete common:company-load)
-    (snippet  common:yasnippet-load)
+  '((snippet  common:yasnippet-load)
     (lint  common:flycheck-load)
     (fold  common:fold-load)
     (autopair  common:autopair-load)

@@ -39,7 +39,6 @@
 
 ;; File Operations
 (global-set-key (kbd "M-o") 'find-file-at-point)
-(global-set-key (kbd "C-o") 'ido-find-file)
 
 ;; Content Operations
 (global-set-key (kbd "C-x C-a") 'mark-whole-buffer)
@@ -116,7 +115,6 @@
 (require 'popup-imenu)
 (global-set-key (kbd "C-f") 'popup-imenu)
 (define-key popup-isearch-keymap (kbd "C-f") 'popup-isearch-cancel)
-(global-set-key (kbd "C-p") 'ido-switch-buffer)
 
 ;; Smex
 (require-package 'smex)
