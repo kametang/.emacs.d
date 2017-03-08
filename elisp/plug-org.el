@@ -20,12 +20,9 @@
   "DETECT-ORG-DIR detect org dir."
   (let ((nr nil)
 	(cdir buffer-file-name))
-    (message "Fun in")
     (when (eq cdir nil)
-      (message "Not file")
-      (setq cdir "~/"))
+      (setq cdir default-directory))
     (when (not (eq umkm/org-cur cdir))
-      (message "try")
       (setq umkm/org-cur cdir)
       (dolist (rc umkm/root-candidate)
 	(when (eq nr nil)
@@ -48,6 +45,9 @@
 ;; Key
 (global-set-key (kbd "C-c C-c") 'umkm/org-capture)
 (global-set-key (kbd "<f11>") 'umkm/org-open)
+
+;; Org Key
+(define-key org-mode-map (kbd "M-n") 'org-insert-heading)
 
 (provide 'plug-org)
 ;;; plug-org.el ends here
