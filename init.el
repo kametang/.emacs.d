@@ -46,6 +46,7 @@
 (require 'sup-python)
 (require 'sup-html)
 (require 'sup-go)
+(require 'sup-cmake)
 
 ;; Provide
 (provide 'init)

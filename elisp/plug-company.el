@@ -27,6 +27,8 @@
 (setq company-tooltip-limit 10)
 (setq company-begin-commands '(self-insert-command))
 (setq company-tooltip-align-annotations t)
+(setq company-dabbrev-downcase nil)
+(setq company-dabbrev-code-ignore-case t)
 (add-to-list 'completion-styles 'initials t)
 
 (when (boundp 'w32-pipe-read-delay)

@@ -22,6 +22,12 @@
 (require 'helm-ls-git)
 (global-set-key (kbd "C-o") 'helm-browse-project)
 
+;; Occur
+(global-set-key (kbd "C-f") 'helm-occur)
+
+;; IMenu
+(global-set-key (kbd "<f5>") 'helm-imenu)
+
 ;; Mode ON
 (helm-mode 1)
 

@@ -19,13 +19,15 @@
 (require 'company-irony)
 (require 'doxymacs)
 
+(setq company-irony-ignore-case t)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+(add-hook 'irony-mode-hook 'irony-eldoc)
+(add-to-list 'company-backends 'company-irony)
+(add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
+
 (defun local:c-load()
   (local:common-load '(doc))
-  (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
-  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-  (add-hook 'irony-mode-hook 'irony-eldoc)
   (irony-mode)
-  (add-to-list 'company-backends 'company-irony)
   (setq-local indent-tabs-mode nil)
   (add-hook 'before-save-hook
 	    (lambda()

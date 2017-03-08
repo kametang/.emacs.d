@@ -34,8 +34,6 @@
 
 ;; Buffer Operation
 (global-set-key (kbd "C-x C-w") 'kill-this-buffer)
-(global-set-key (kbd "<f6>") 'switch-to-next-buffer)
-(global-set-key (kbd "<f5>") 'switch-to-prev-buffer)
 
 ;; File Operations
 (global-set-key (kbd "M-o") 'find-file-at-point)
@@ -65,7 +63,9 @@
 
 ;; Position
 (global-set-key (kbd "<M-home>") 'beginning-of-buffer)
+(global-set-key (kbd "ESC <home>") 'beginning-of-buffer)
 (global-set-key (kbd "<M-end>") 'end-of-buffer)
+(global-set-key (kbd "ESC <end>") 'end-of-buffer)
 (global-set-key (kbd "<M-prior>") 'backward-paragraph)
 (global-set-key (kbd "<M-next>") 'forward-paragraph)
 (global-set-key (kbd "<M-up>")
@@ -110,17 +110,17 @@
 		      (comment-or-uncomment-region (region-beginning)
 						   (region-end))))))
 
-;; Search
-(require-package 'popup-imenu)
-(require 'popup-imenu)
-(global-set-key (kbd "C-f") 'popup-imenu)
-(define-key popup-isearch-keymap (kbd "C-f") 'popup-isearch-cancel)
+;; ;; Search
+;; (require-package 'popup-imenu)
+;; (require 'popup-imenu)
+;; (global-set-key (kbd "C-f") 'popup-imenu)
+;; (define-key popup-isearch-keymap (kbd "C-f") 'popup-isearch-cancel)
 
 ;; Smex
-(require-package 'smex)
-(require 'smex)
-(smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
+;; (require-package 'smex)
+;; (require 'smex)
+;; (smex-initialize)
+;; (global-set-key (kbd "M-x") 'smex)
 
 ;; Provide
 (provide 'init-key)
