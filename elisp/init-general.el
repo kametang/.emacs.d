@@ -45,6 +45,11 @@
 ;; Disable cache
 (setq cache-long-scans nil)
 
+;; Always center
+(require-package 'centered-cursor-mode)
+(require 'centered-cursor-mode)
+(global-centered-cursor-mode 1)
+
 ;; Provide
 (provide 'init-general)
 ;;; init-general.el ends here

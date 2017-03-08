@@ -62,6 +62,8 @@
 (global-set-key (kbd "C-x C-y") 'undo-tree-redo)
 
 ;; Position
+(global-set-key (kbd "C-e") 'end-of-line)
+(global-set-key (kbd "C-q") 'beginning-of-line)
 (global-set-key (kbd "<M-home>") 'beginning-of-buffer)
 (global-set-key (kbd "ESC <home>") 'beginning-of-buffer)
 (global-set-key (kbd "<M-end>") 'end-of-buffer)

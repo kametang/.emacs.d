@@ -27,6 +27,8 @@
 (setq company-tooltip-limit 10)
 (setq company-begin-commands '(self-insert-command))
 (setq company-tooltip-align-annotations t)
+(setq company-tooltip-offset-display 'lines)
+(setq company-tooltip-flip-when-above t)
 (setq company-dabbrev-downcase nil)
 (setq company-dabbrev-code-ignore-case t)
 (add-to-list 'completion-styles 'initials t)
