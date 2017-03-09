@@ -14,7 +14,9 @@
 ;;; Power Line
 (require-package 'powerline)
 (require 'powerline)
-(powerline-default-theme)
+(if (eq system-type 'cygwin)
+    (powerline-vim-theme)
+  (powerline-default-theme))
 
 ;; Provide
 (provide 'init-theme)
