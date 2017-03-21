@@ -36,7 +36,7 @@
 (when (boundp 'w32-pipe-read-delay)
   (setq w32-pipe-read-delay 0))
 (when (boundp 'w32-pipe-buffer-size)
-  (setq w32-pipe-buffer-size (*64 1024)))
+  (setq w32-pipe-buffer-size (* 64 1024)))
 
 ;; Color
 (let ((class '((class color)

@@ -26,7 +26,6 @@
 
 ;; Package Settings
 (require 'plug-helm)
-(require 'plug-org)
 (require 'plug-window-number)
 (require 'plug-flycheck)
 (require 'plug-hide-show)
@@ -51,4 +50,3 @@
 ;; Provide
 (provide 'init)
 ;;; init.el ends here
-(put 'upcase-region 'disabled nil)
