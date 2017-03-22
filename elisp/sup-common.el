@@ -15,9 +15,7 @@
 (require 'flycheck)
 (require 'yasnippet)
 (require 'dumb-jump)
-(require 'hideshow)
 (require 'eldoc)
-(require 'electric)
 (require 'anzu)
 
 ;;; Work
@@ -34,10 +32,6 @@
 (defun common:dumb-jump-load()
   (dumb-jump-mode))
 
-;; Fold
-(defun common:fold-load()
-  (hs-minor-mode))
-
 ;; Autopair
 (defun common:autopair-load()
   (electric-pair-mode))
@@ -53,7 +47,6 @@
 (defvar local:load-list
   '((snippet  common:yasnippet-load)
     (lint  common:flycheck-load)
-    (fold  common:fold-load)
     (autopair  common:autopair-load)
     (jump  common:dumb-jump-load)
     (doc common:eldoc-load)

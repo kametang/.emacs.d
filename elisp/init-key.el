@@ -13,8 +13,7 @@
   (if (region-active-p)
       (kill-region (region-beginning)
 		   (region-end))
-    (progn
-      (kill-whole-line))))
+    (progn (kill-whole-line))))
 
 ;; Quick Open init file
 (global-set-key (kbd "M-/")
@@ -30,6 +29,11 @@
 
 ;; Map Custom Key
 (global-set-key (kbd "C-x C-q") 'kill-emacs)
+(add-hook 'server-visit-hook '(lambda ()
+				(global-set-key (kbd "C-x C-q")
+						'(lambda ()
+						   (interactive)
+						   (mapc 'kill-buffer (buffer-list))))))
 (global-set-key (kbd "C-\\") 'delete-other-windows)
 
 ;; Buffer Operation
@@ -95,22 +99,19 @@
 		(lambda()
 		  (interactive)
 		  (if (use-region-p)
-		      (progn
-			(if (= (region-end)
-			       (point))
-			    (exchange-point-and-mark)
-			  t)
-			(move-beginning-of-line 1)
-			(exchange-point-and-mark)
-			(move-end-of-line 1)
-			(comment-or-uncomment-region (region-beginning)
-						     (region-end)))
-		    (progn
-		      (move-beginning-of-line 1)
-		      (set-mark (point))
-		      (move-end-of-line 1)
-		      (comment-or-uncomment-region (region-beginning)
-						   (region-end))))))
+		      (progn (if (= (region-end)
+				    (point))
+				 (exchange-point-and-mark) t)
+			     (move-beginning-of-line 1)
+			     (exchange-point-and-mark)
+			     (move-end-of-line 1)
+			     (comment-or-uncomment-region (region-beginning)
+							  (region-end)))
+		    (progn (move-beginning-of-line 1)
+			   (set-mark (point))
+			   (move-end-of-line 1)
+			   (comment-or-uncomment-region (region-beginning)
+							(region-end))))))
 
 ;; ;; Search
 ;; (require-package 'popup-imenu)

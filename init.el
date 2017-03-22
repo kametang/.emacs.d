@@ -26,15 +26,14 @@
 
 ;; Package Settings
 (require 'plug-helm)
-(require 'plug-window-number)
 (require 'plug-flycheck)
-(require 'plug-hide-show)
 (require 'plug-trim-space)
 (require 'plug-anzu)
 (require 'plug-jump)
 (require 'plug-yasnippet)
 (require 'plug-doxy)
 (require 'plug-company)
+(require 'plug-magit)
 
 ;; Language Support
 (require 'sup-common)

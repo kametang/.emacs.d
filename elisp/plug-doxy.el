@@ -8,7 +8,7 @@
 ;;; Necessary Package Install (require-package 'xxx)
 
 ;;; Work
-(setq exec-path (append exec-path (expand-file-name "doxymacs-code/c" user-emacs-directory)))
+;; (setq exec-path (append exec-path (expand-file-name "doxymacs-code/c" user-emacs-directory)))
 (add-to-list 'load-path (expand-file-name "doxymacs-code/lisp" user-emacs-directory))
 
 (require 'doxymacs)

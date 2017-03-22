@@ -4,13 +4,18 @@
 (require 'func-package)
 
 (require-package 'helm)
+(require-package 'helm-themes)
 
 (require 'helm)
 (require 'helm-config)
+(require 'helm-themes)
 
 ;; Settings
 (setq helm-mode-fuzzy-match t)
 (setq helm-completion-in-region-fuzzy-match t)
+
+;; Theme
+(helm-themes--load-theme "clarity")
 
 ;; Key Maps
 (global-set-key (kbd "C-p") 'switch-to-buffer)
