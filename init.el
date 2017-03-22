@@ -33,7 +33,6 @@
 (require 'plug-yasnippet)
 (require 'plug-doxy)
 (require 'plug-company)
-(require 'plug-magit)
 
 ;; Language Support
 (require 'sup-common)
