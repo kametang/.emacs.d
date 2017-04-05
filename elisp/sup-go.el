@@ -3,27 +3,25 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'func-package)
 
-;;; Necessary Package Install (require-package 'xxx)
-(require-package 'go-mode)
-(require-package 'company-go)
-(require-package 'go-eldoc)
+(use-package
+  go-mode
+  :ensure t
+  :config (add-hook 'before-save-hook 'gofmt-before-save))
 
-;;; Work
-(require 'sup-common)
-(require 'go-mode)
-(require 'company-go)
-(require 'go-eldoc)
+(use-package
+  go-eldoc
+  :ensure t
+  :config (add-hook 'go-mode-hook 'go-eldoc-setup))
 
-(defun local:go-load()
-  (local:common-load)
-  (add-hook 'before-save-hook 'gofmt-before-save)
+(use-package
+  company-go
+  :ensure t
+  :config
   (set (make-local-variable 'company-backends)
-       '(company-go))
-  (go-eldoc-setup))
+       '(company-go)))
 
-(add-hook 'go-mode-hook 'local:go-load)
+(add-hook 'go-mode-hook 'local:common-load)
 ;; Provide
 (provide 'sup-go)
 ;;; sup-go.el ends here

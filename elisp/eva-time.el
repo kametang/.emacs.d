@@ -5,13 +5,11 @@
 ;;; Code:
 
 ;; Evaluation Time
-(require 'func-package)
 
-(require-package 'benchmark-init)
-
-(require 'benchmark-init)
-
-(benchmark-init/activate)
+(use-package benchmark-init
+  :ensure t
+  :config
+  (benchmark-init/activate))
 
 ;; Provide
 (provide 'eva-time)

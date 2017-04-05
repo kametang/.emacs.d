@@ -1,15 +1,16 @@
-;; Elixir
-(require 'func-package)
+;; package --- Summary
 
-(require-package 'alchemist)
+;;; Commentary:
 
-(defun local:elixir-load()
-  (require 'sup-common)
-  (local:common-load)
-  (require 'alchemist)
-  (alchemist-mode))
+;;; Code:
 
-(add-hook 'elixir-mode-hook 'local:elixir-load)
+(use-package alchemist
+  :ensure t
+  :config
+  (add-hook 'elixir-mode-hook 'alchemist-mode))
+
+(add-hook 'elixir-mode-hook 'local:common-load)
 
 ;; Provide
 (provide 'sup-elixir)
+;;; sup-elixir.el ends here

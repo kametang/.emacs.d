@@ -3,15 +3,12 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'func-package)
 
-;;; Necessary Package Install (require-package 'xxx)
-(require-package 'cmake-mode)
-(require 'cmake-mode)
-
-;;; Work
-(setq auto-mode-alist (append '(("CMakeLists\\.txt\\'". cmake-mode)
-				("\\.cmake\\'" .cmake-mode)) auto-mode-alist))
+(use-package
+  cmake-mode
+  :ensure t
+  :mode (("CMakeLists\\.txt\\'" . cmake-mode)
+	 ("\\.cmake\\'" . cmake-mode)))
 
 ;; Provide
 (provide 'sup-cmake)

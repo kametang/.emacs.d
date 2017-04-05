@@ -4,33 +4,31 @@
 
 ;;; Code:
 
-;; Rust
-(require 'func-package)
 
-(require-package 'racer)
-(require-package 'rust-mode)
-(require-package 'eldoc)
-(require-package 'flycheck-rust)
-(require-package 'cargo)
+(use-package
+  rust-mode
+  :ensure t
+  :config
+  (setq-default rust-format-on-save t))
 
-(require 'sup-common)
-(require 'racer)
-(require 'rust-mode)
-(require 'flycheck-rust)
-(require 'cargo)
+(use-package
+  racer
+  :ensure t
+  :config (setq-default racer-cmd (expand-file-name "../.cargo/bin/racer" user-emacs-directory))
+  (setq-default racer-rust-src-path (expand-file-name "rust/src" user-emacs-directory))
+  (add-hook 'rust-mode-hook 'racer-mode))
 
-(setq-default racer-cmd (expand-file-name "../.cargo/bin/racer" user-emacs-directory))
-(setq-default racer-rust-src-path (expand-file-name "rust/src" user-emacs-directory))
-(setq-default rust-format-on-save t)
+(use-package
+  flycheck-rust
+  :ensure t
+  :config (add-hook 'rust-mode-hook 'flycheck-rust-setup))
 
-(defun local:rust-load()
-  (local:common-load)
-  (racer-mode)
-  (flycheck-rust-setup)
-  (cargo-minor-mode))
+(use-package
+  cargo
+  :ensure t
+  :config (add-hook 'rust-mode-hook 'cargo-minor-mode))
 
-
-(add-hook 'rust-mode-hook 'local:rust-load)
+(add-hook 'rust-mode-hook 'local:common-load)
 
 ;; Provide
 (provide 'sup-rust)

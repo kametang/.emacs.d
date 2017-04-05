@@ -3,15 +3,23 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'func-package)
 
-(require-package 'color-theme-modern)
-(load-theme 'clarity t)
+;; Theme
+(use-package color-theme-modern
+  :ensure t
+  :config
+  (load-theme 'billw t))
 
-;;; Power Line
-(require-package 'powerline)
-(require 'powerline)
-(powerline-default-theme)
+(use-package helm-themes
+  :ensure t
+  :config
+  (helm-themes--load-theme "billw"))
+
+;; Power Line
+(use-package powerline
+  :ensure t
+  :config
+  (powerline-default-theme))
 
 ;; Provide
 (provide 'init-theme)

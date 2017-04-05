@@ -7,11 +7,8 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'func-package)
 
-;;; Necessary Package Install (require-package 'xxx)
-
-;;; Work
+$0
 
 ;; Provide
 (provide '`(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`)

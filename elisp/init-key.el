@@ -4,9 +4,6 @@
 
 ;;; Code:
 
-;; Key
-(require 'func-package)
-
 ;; Functions
 (defun cut-region-or-line()
   (interactive)
@@ -50,20 +47,21 @@
 		(lambda()
 		  (interactive)
 		  (cut-region-or-line)
-		  (yank)))
+		  (undo)))
 (global-set-key (kbd "C-x C-d")
 		(lambda()
 		  (interactive)
 		  (kill-whole-line)
-		  (yank)
+		  (undo)
 		  (yank)
 		  (line-move -1)))
 
 ;; Undo/Redo
-(require-package 'undo-tree)
-(global-undo-tree-mode)
-(global-set-key (kbd "C-x C-z") 'undo)
-(global-set-key (kbd "C-x C-y") 'undo-tree-redo)
+(use-package undo-tree
+  :ensure t
+  :config
+  (global-undo-tree-mode)
+  :bind (("C-z" . undo)))
 
 ;; Position
 (global-set-key (kbd "C-e") 'end-of-line)
@@ -95,7 +93,7 @@
 (global-set-key (kbd "C-g") 'goto-line)
 
 ;; Comment
-(global-set-key (kbd "C-x C-_")
+(global-set-key (kbd "C-_")
 		(lambda()
 		  (interactive)
 		  (if (use-region-p)
@@ -112,18 +110,6 @@
 			   (move-end-of-line 1)
 			   (comment-or-uncomment-region (region-beginning)
 							(region-end))))))
-
-;; ;; Search
-;; (require-package 'popup-imenu)
-;; (require 'popup-imenu)
-;; (global-set-key (kbd "C-f") 'popup-imenu)
-;; (define-key popup-isearch-keymap (kbd "C-f") 'popup-isearch-cancel)
-
-;; Smex
-;; (require-package 'smex)
-;; (require 'smex)
-;; (smex-initialize)
-;; (global-set-key (kbd "M-x") 'smex)
 
 ;; Provide
 (provide 'init-key)

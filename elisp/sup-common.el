@@ -3,20 +3,14 @@
 ;;; Commentary:
 
 ;;; Code:
-(require 'func-package)
+(use-package
+  electric
+  :ensure t
+  :config (electric-pair-mode))
 
-;;; Necessary Package Install (require-package 'xxx)
-(require-package 'flycheck)
-(require-package 'yasnippet)
-(require-package 'dumb-jump)
-(require-package 'eldoc)
-(require-package 'anzu)
-
-(require 'flycheck)
-(require 'yasnippet)
-(require 'dumb-jump)
-(require 'eldoc)
-(require 'anzu)
+(use-package
+  eldoc
+  :ensure t)
 
 ;;; Work
 
@@ -32,10 +26,6 @@
 (defun common:dumb-jump-load()
   (dumb-jump-mode))
 
-;; Autopair
-(defun common:autopair-load()
-  (electric-pair-mode))
-
 ;; Eldoc
 (defun common:eldoc-load()
   (eldoc-mode))
@@ -44,11 +34,15 @@
 (defun common:anzu-load()
   (anzu-mode +1))
 
+;; Company
+(defun common:company-load()
+  (company-mode))
+
 (defvar local:load-list
   '((snippet  common:yasnippet-load)
     (lint  common:flycheck-load)
-    (autopair  common:autopair-load)
     (jump  common:dumb-jump-load)
+    (comp common:company-load)
     (doc common:eldoc-load)
     (sr common:anzu-load)))
 

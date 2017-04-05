@@ -1,22 +1,25 @@
-;; Python
-(require 'func-package)
+;; package --- Summary
 
-(require-package 'company-jedi)
-(require-package 'flycheck-pyflakes)
+;;; Commentary:
 
-(defun local:python-load()
-  (require 'sup-common)
-  (local:common-load)
-  (require 'jedi-core)
-  (require 'flycheck-pyflakes)
-  (setq-default jedi:complete-on-dot t)
+;;; Code:
+
+(use-package
+  company-jedi
+  :ensure t
+  :init (setq-default jedi:complete-on-dot t)
   (setq-default jedi:use-shortcuts t)
   (setq-default jedi:tooltip-method t)
-  (jedi:setup)
+  :config (require 'jedi-core)
+  (add-hook 'python-mode-hook 'jedi:setup)
   (add-to-list 'company-backends 'company-jedi))
 
+(use-package
+  flycheck-pyflakes
+  :ensure t)
 
-(add-hook 'python-mode-hook 'local:python-load)
+(add-hook 'python-mode-hook 'local:common-load)
 
 ;; Provide
 (provide 'sup-python)
+;;; sup-python.el ends here

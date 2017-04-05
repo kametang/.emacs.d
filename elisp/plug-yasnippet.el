@@ -4,14 +4,11 @@
 
 ;;; Code:
 
-;; Yasnippet
-(require 'func-package)
-
-(require-package 'yasnippet)
-
-(require 'yasnippet)
-
-(yas-reload-all)
+(use-package yasnippet
+  :ensure t
+  :defer 2
+  :config
+  (yas-reload-all))
 
 ;; Provide
 (provide 'plug-yasnippet)

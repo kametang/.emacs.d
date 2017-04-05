@@ -4,9 +4,6 @@
 
 ;;; Code:
 
-;; General Settings
-(require 'func-package)
-
 ;; Environment
 (set-language-environment "UTF-8")
 
@@ -25,10 +22,12 @@
     (funcall mode -1)))
 
 ;; Show parens
-(require-package 'mic-paren)
-(require 'mic-paren)
-(paren-activate)
-(setq paren-highlight-offscreen t)
+(use-package mic-paren
+  :ensure t
+  :config
+  (setq paren-highlight-offscreen t)
+  (setq paren-highlight-at-point t)
+  (paren-activate))
 
 ;; Highlight Line
 (global-hl-line-mode t)
@@ -46,9 +45,10 @@
 (setq cache-long-scans nil)
 
 ;; Always center
-(require-package 'centered-cursor-mode)
-(require 'centered-cursor-mode)
-(global-centered-cursor-mode 1)
+(use-package centered-cursor-mode
+  :ensure t
+  :config
+  (global-centered-cursor-mode 1))
 
 ;; Provide
 (provide 'init-general)

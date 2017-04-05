@@ -1,27 +1,33 @@
-;; FlyCheck Global Settings
-(require 'func-package)
+;; package --- Summary
 
-(require-package 'flycheck)
+;;; Commentary:
 
-(require 'flycheck)
+;;; Code:
 
-(setq-default flycheck-check-syntax-automatically '(save mode-enabled))
-(setq-default flycheck-highlighting-mode 'lines)
-(setq-default flycheck-display-errors-function 'ignore)
-(setq-default flycheck-emacs-lisp-load-path 'inherit)
-;; (setq-default flycheck-e
+(use-package flycheck
+  :ensure t
+  :init
+  (setq-default flycheck-check-syntax-automatically '(save mode-enabled))
+  (setq-default flycheck-highlighting-mode 'lines)
+  (setq-default flycheck-display-errors-function 'ignore)
+  (setq-default flycheck-emacs-lisp-load-path 'inherit)
+  :functions (flycheck-list-errors flycheck-error-list-goto-error)
+  :config
+  (defun umkm:flycheck-open()
+    "open flycheck error list"
+    (interactive)
+    (flycheck-list-errors)
+    (other-window 1))
+  (defun umkm:flycheck-go()
+    "go error"
+    (interactive)
+    (flycheck-error-list-goto-error)
+    (delete-other-windows))
+  :bind (("<f12>" . umkm:flycheck-open)
+	 :map flycheck-error-list-mode-map
+	 ("RET" .  umkm:flycheck-go)))
 
-(global-set-key (kbd "<f12>") 
-		(lambda() 
-		  (interactive) 
-		  (flycheck-list-errors) 
-		  (other-window 1)))
-
-(define-key flycheck-error-list-mode-map (kbd "RET") 
-  (lambda() 
-    (interactive) 
-    (flycheck-error-list-goto-error) 
-    (delete-other-windows)))
 
 ;; Provide
 (provide 'plug-flycheck)
+;;; plug-flycheck.el ends here
