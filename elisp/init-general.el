@@ -22,10 +22,10 @@
     (funcall mode -1)))
 
 ;; Show parens
-(use-package mic-paren
+(use-package
+  mic-paren
   :ensure t
-  :config
-  (setq paren-highlight-offscreen t)
+  :config (setq paren-highlight-offscreen t)
   (setq paren-highlight-at-point t)
   (paren-activate))
 
@@ -45,10 +45,14 @@
 (setq cache-long-scans nil)
 
 ;; Always center
-(use-package centered-cursor-mode
+(use-package
+  centered-cursor-mode
   :ensure t
-  :config
-  (global-centered-cursor-mode 1))
+  :config (global-centered-cursor-mode t))
+
+;; Fonts
+(when (not(eq window-system 'nul))
+  (set-frame-font "Inconsolata 18"))
 
 ;; Provide
 (provide 'init-general)
