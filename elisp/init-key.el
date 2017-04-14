@@ -47,7 +47,7 @@
 		(lambda()
 		  (interactive)
 		  (cut-region-or-line)
-		  (undo)))
+		  (yank)))
 (global-set-key (kbd "C-x C-d")
 		(lambda()
 		  (interactive)
@@ -57,10 +57,10 @@
 		  (line-move -1)))
 
 ;; Undo/Redo
-(use-package undo-tree
+(use-package
+  undo-tree
   :ensure t
-  :config
-  (global-undo-tree-mode)
+  :config (global-undo-tree-mode)
   :bind (("C-z" . undo)))
 
 ;; Position
