@@ -6,6 +6,8 @@
 
 ;; Environment
 (set-language-environment "UTF-8")
+(setq enable-local-variables
+      :all)
 
 ;; Functions
 (setq inhibit-splash-screen t)

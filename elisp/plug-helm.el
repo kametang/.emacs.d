@@ -16,10 +16,5 @@
 	 ("C-f" . helm-occur)
 	 ("<f5>" . helm-imenu)))
 
-(use-package
-  helm-ls-git
-  :ensure t
-  :bind ("C-o" . helm-browse-project))
-
 (provide 'plug-helm)
 ;;; plug-helm.el ends here
