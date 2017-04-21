@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: fon
+# key: fon
+# type: command
+# --
+(insert "/* clang-format on */")

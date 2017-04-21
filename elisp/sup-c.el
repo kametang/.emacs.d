@@ -157,6 +157,8 @@
   :config (defun local:c-format()
 	    "Format C File"
 	    (when (eq major-mode 'c-mode)
+	      (align (point-min)
+		     (point-max))
 	      (clang-format-buffer)))
   (add-hook 'before-save-hook 'local:c-format))
 
