@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: fsmcb
+# key: fsmcb
+# --
+static void ${1:fn_name}_into(SYS_FSM_STATE_T new_state);
+static void $1_run(SYS_FSM_STATE_T new_state);
+static void $1_leave(SYS_FSM_STATE_T new_state);

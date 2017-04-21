@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: timerc
+# key: timerc
+# --
+//--------------------------------------------------------------------------------------
+//      EXPORT METHODS - ${1:$(upcase yas-text)}
+//--------------------------------------------------------------------------------------
+void APP_TIMER_${1:Name}_Check(${2:void}){
+     SYS_TIMER_Check(&${3:timer_variable});
+}
+void APP_TIMER_$1_Reset($2){
+     SYS_TIMER_Reset(&$3);
+}
+bool APP_TIMER_$1_IsDone($2){
+     return SYS_TIMER_IsDone(&$3);
+}
+$0

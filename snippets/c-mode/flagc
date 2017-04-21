@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: flagc
+# key: flagc
+# --
+//--------------------------------------------------------------------------------------
+//      EXPORT METHODS - ${1:$(upcase yas-text)}
+//--------------------------------------------------------------------------------------
+void APP_FLAG_${1:Name}_Set(${2:void}){
+     SYS_FLAG_Set(&${3:timer_variable});
+}
+void APP_FLAG_$1_Reset($2){
+     SYS_FLAG_Reset(&$3);
+}
+bool APP_FLAG_$1_Isset($2){
+     return SYS_FLAG_Isset(&$3);
+}
+$0

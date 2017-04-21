@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: sub
+# key: sub
+# --
+//--------------------------------------------------------------------------------------
+//      ${1:$(upcase yas-text)}
+//--------------------------------------------------------------------------------------
+static SYS_SUB_RTN_T ${1:Name}_enter(void* arg) {$0}
+static SYS_SUB_RTN_T $1_run(void* arg) {}
+static SYS_SUB_RTN_T $1_leave(void* arg) {}
+static SYS_SUB_T sub_$1 = {false, $1_enter, $1_run, $1_leave};
