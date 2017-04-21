@@ -35,6 +35,8 @@
 
 ;; Buffer Operation
 (global-set-key (kbd "C-x C-w") 'kill-this-buffer)
+(global-set-key (kbd "<C-next>") 'next-buffer)
+(global-set-key (kbd "<C-prior>") 'previous-buffer)
 
 ;; File Operations
 (global-set-key (kbd "M-o") 'find-file-at-point)
@@ -93,23 +95,29 @@
 (global-set-key (kbd "C-g") 'goto-line)
 
 ;; Comment
-(global-set-key (kbd "C-_")
-		(lambda()
-		  (interactive)
-		  (if (use-region-p)
-		      (progn (if (= (region-end)
-				    (point))
-				 (exchange-point-and-mark) t)
-			     (move-beginning-of-line 1)
-			     (exchange-point-and-mark)
-			     (move-end-of-line 1)
-			     (comment-or-uncomment-region (region-beginning)
-							  (region-end)))
-		    (progn (move-beginning-of-line 1)
-			   (set-mark (point))
-			   (move-end-of-line 1)
-			   (comment-or-uncomment-region (region-beginning)
-							(region-end))))))
+(defun umkm:comment()
+  "Comment part"
+  (interactive)
+  (if (use-region-p)
+      (progn (if (= (region-end)
+		    (point))
+		 (exchange-point-and-mark) t)
+	     (move-beginning-of-line 1)
+	     (exchange-point-and-mark)
+	     (move-end-of-line 1)
+	     (comment-or-uncomment-region (region-beginning)
+					  (region-end)))
+    (progn (move-beginning-of-line 1)
+	   (set-mark (point))
+	   (move-end-of-line 1)
+	   (comment-or-uncomment-region (region-beginning)
+					(region-end)))))
+(global-set-key (kbd "C-_") 'umkm:comment)
+(global-set-key (kbd "C-/") 'umkm:comment)
+
+
+;; Window
+(global-set-key (kbd "<C-tab>") 'other-window)
 
 ;; Provide
 (provide 'init-key)
