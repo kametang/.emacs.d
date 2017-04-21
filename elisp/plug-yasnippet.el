@@ -4,11 +4,11 @@
 
 ;;; Code:
 
-(use-package yasnippet
+(use-package
+  yasnippet
   :ensure t
   :defer 2
-  :config
-  (yas-reload-all))
+  :config (yas-reload-all))
 
 ;; Provide
 (provide 'plug-yasnippet)
