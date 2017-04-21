@@ -35,6 +35,7 @@
 
 ;; Package Settings
 (require 'plug-helm)
+(require 'plug-ffip)
 (require 'plug-flycheck)
 (require 'plug-trim-space)
 (require 'plug-anzu)
