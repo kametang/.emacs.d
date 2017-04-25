@@ -17,13 +17,39 @@
 
 (defun dom:fc (dom tag)
   "Find first child of DOM tagged TAG."
-  (let ((tags (dom-by-tag dom tag)))
-    (dom-text (car tags))))
+  (let* ((tags (dom-by-tag dom tag)))
+    (car tags)))
 
+(defun local:c-mdl-root(root)
+  "Return ffip root."
+  (cons 'ffip-project-root (expand-file-name "." root)))
+
+(defun local:c-mdl-stm-exclude()
+  "Return ffip exclude for STM."
+  (list "MDK-ARM" "Utilities"))
+
+(defun local:c-mdl-pic-exclude()
+  "Return ffip exclude for PIC"
+  (list "build" "nbproject" "debug" "dist"))
+
+(defun local:c-make-dir-locals(root)
+  "Make .dir-locals.el by ROOT."
+  (let* ((targets '("*.c" "*.h")) excludes (ffiproot (local:c-mdl-root (expand-file-name ".."
+											 root)))
+	 (path (expand-file-name ".." root)) sexp)
+    (cond ((string-match-p "/MDK-ARM" root)
+	   (setq excludes (local:c-mdl-stm-exclude)))
+	  ((string-match-p "/nbproject" root)
+	   (setq excludes (local:c-mdl-pic-exclude))))
+    (setq sexp (list (list nil (list ffiproot (cons 'ffip-patterns targets)
+				     (cons 'ffip-prune-patterns excludes)))))
+    (with-temp-buffer (insert (replace-regexp-in-string "^((nil " "((nil . " (format "%S" sexp)))
+		      (write-file (expand-file-name ".dir-locals.el" path))
+		      (message (format "<ffip>: %s" (expand-file-name ".dir-locals.el" path))))))
 
 (defun local:stm32-keil-inc-path()
   "Return suggested Keil STM32 Include Path."
-  (let ((paths '("c:/Keil_v5/ARM/ARMCC/include"))
+  (let ((paths (list "c:/Keil_v5/ARM/ARMCC/include"))
 	(sugs '()))
     (dolist (sug paths)
       (when (file-exists-p sug)
@@ -43,8 +69,8 @@
 
 (defun local:read-stm32-options (path)
   "Read STM32 options from PATH."
-  (let ((opt-content (local:load-dom-from-xml (local:get-file-path path "*.uvprojx")))
-	(stm32opts '()))
+  (let* ((opt-content (local:load-dom-from-xml (local:get-file-path path "*.uvprojx")))
+	 (stm32opts '()))
     (dolist (target (dom-by-tag (dom:fc opt-content 'Targets) 'Target))
       (when target (let ((topts (dom:fc (dom:fc (dom:fc (dom:fc target 'TargetOption) 'TargetArmAds)
 						'Cads) 'VariousControls)))
@@ -54,23 +80,53 @@
 			     (when ii (add-to-list 'stm32opts (format "-I%s"
 								      (replace-regexp-in-string
 								       "^\\.\\./" "" ii)))))))))
-    (remove-duplicates stm32opts
-		       :test 'string=)))
+    stm32opts))
 
+;; (car (dom-by-tag (local:load-dom-from-xml (local:get-file-path "d:/Proj_Library/Application/MDK-ARM" "*.uvprojx")) 'Targets))
+
+(defun local:c-make-gitignore(root)
+  "Make .gitignore for C project by ROOT."
+  (let ((fname (cond ((string-match-p "/MDK-ARM" root) "gitignore_stm")
+		     ((string-match-p "/nbproject" root) "gitignore_pic")))
+	(gname (expand-file-name ".gitignore" (expand-file-name ".." root))))
+    (with-temp-buffer (insert-file-contents (expand-file-name (format "elisp/template/%s" fname)
+							      user-emacs-directory))
+		      (write-file gname)
+		      (message (format "<GitIgnore>: %s" gname)))))
+
+(defun local:get-pic-include-path()
+  "Provide choose and return PIC include path."
+  (let* ((mc-root "c:/Program Files (x86)/Microchip"))
+    (if (file-exists-p mc-root)
+	(let* ((test-cases '("xc8" "xc16" "xc32"))
+	       (shrs '()))
+	  (dolist (d test-cases)
+	    (let* ((c-root (expand-file-name d mc-root)))
+	      (when (file-exists-p c-root)
+		(dolist (c (directory-files c-root))
+		  (unless (string-match-p "^\\." c)
+		    (cond ((string= d "xc8")
+			   (add-to-list 'shrs (expand-file-name "include" (expand-file-name c
+											    c-root))))
+			  ((string= d "xc16")
+			   (add-to-list 'shrs (expand-file-name "include" (expand-file-name c
+											    c-root))))
+			  ((string= d "xc32")
+			   (add-to-list 'shrs (expand-file-name "pic32mx/include" (expand-file-name
+										   c
+										   c-root))))))))))
+	  (if shrs (completing-read "Choose PIC Include Path: " shrs) shrs)) nil)))
 
 (defun local:read-pic-options(path)
   "Read PIC options from PATH."
   (let* ((conf-dom (local:load-dom-from-xml (local:get-file-path path "configurations.xml")))
-	 (tc-dom (local:load-dom-from-xml (local:get-file-path path "private/configurations.xml")))
+	 (tc (local:get-pic-include-path))
 	 (rt '()))
-    (let* ((target (dom:fc conf-dom 'targetDevice))
-	   (tc (replace-regexp-in-string "/bin" "/include" (replace-regexp-in-string "\\\\" "/"
-										     (dom:fc tc-dom
-											     'languageToolchainDir))))
+    (let* ((target (dom-text (dom:fc conf-dom 'targetDevice)))
 	   (props (mapcar (lambda(x)
 			    (dom-attributes x))
 			  (dom-by-tag conf-dom 'property))))
-      (add-to-list 'rt (format "-I%s" tc))
+      (when tc (add-to-list 'rt (format "-I%s" tc)))
       (add-to-list 'rt (format "-D%s" (replace-regexp-in-string "^PIC" "_" target)))
       (cond ((string-match-p "^PIC18" target)
 	     (setq rt (append rt '("-D__PICC18__" "-D__XC8"))))
@@ -89,16 +145,21 @@
 	(setq incs (mapcar (lambda(x)
 			     (format "-I%s" x)) incs))
 	(setq rt (append rt incs))
-	(remove-duplicates rt
-			   :test 'string=) rt))))
+	rt))))
 
 (defun local:get-stm32-options(path)
   "LOCAL:GET-STM32-OPTIONS"
   (let ((sopts (local:read-stm32-options path))
-	(incpath (local:stm32-keil-inc-path)))
+	(incpath (local:stm32-keil-inc-path))
+	(exclude (local:c-mdl-stm-exclude))
+	(dumbjumpfile (expand-file-name ".dumbjump" (expand-file-name ".." path))))
+    (with-temp-buffer (dolist (e exclude)
+			(insert (format "-%s\n" e)))
+		      (insert (format "+%s\n" incpath))
+		      (write-file dumbjumpfile))
     (add-to-list 'sopts (format "-I%s" incpath)) sopts))
 
-(defun make-clang-complete()
+(defun make-c-project()
   "MAKE-CLANG-COMPLETE generate .clang_complete for STM32 & Microchip friendly."
   (interactive)
   (let ((proj-conf-dir (read-directory-name "Choose (MDK-ARM/nbproject): " ))
@@ -110,23 +171,27 @@
 	   (setq cc-options (local:read-pic-options proj-conf-dir))))
     (when cc-options (add-to-list 'cc-options "-nostdinc")
 	  (setq cc-content (mapconcat 'identity cc-options "\n"))
-	  (let ((sc-root (read-directory-name "Choose Source Code Root: " (expand-file-name "../"
-											    proj-conf-dir))))
+	  (let ((sc-root (expand-file-name ".." proj-conf-dir)))
 	    (with-temp-buffer (insert cc-content)
 			      (write-file (expand-file-name ".clang_complete" sc-root))
-			      (message (format "%s created." (expand-file-name ".clang_complete"
-									       sc-root))))))))
+			      (message (format "<ClangComplete>: %s created." (expand-file-name
+									       ".clang_complete"
+									       sc-root))))))
+    (local:c-make-dir-locals proj-conf-dir)
+    (local:c-make-gitignore proj-conf-dir)))
+;; ))
+
 (use-package
   irony
   :ensure t
   :functions irony-make-clang-complete
   :config (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
   (add-hook 'c-mode-hook 'irony-mode)
-  (defun irony-make-clang-complete()
+  (defun irony-make-c-project()
     (interactive)
-    (make-clang-complete)
+    (make-c-project)
     (irony-cdb-autosetup-compile-options))
-  :bind ("<f7>" . irony-make-clang-complete))
+  :bind ("<f7>" . irony-make-c-project))
 
 (use-package
   irony-eldoc
