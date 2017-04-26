@@ -20,6 +20,11 @@
   (let* ((tags (dom-by-tag dom tag)))
     (car tags)))
 
+(defun local:copy-packager(path)
+  "Copy packager to PATH."
+  (copy-file (expand-file-name "elisp/utilities/packager.exe" user-emacs-directory)
+	     (expand-file-name "packager.exe" path) t))
+
 (defun local:c-mdl-root(root)
   "Return ffip root."
   (cons 'ffip-project-root (expand-file-name "." root)))
@@ -45,7 +50,8 @@
 				     (cons 'ffip-prune-patterns excludes)))))
     (with-temp-buffer (insert (replace-regexp-in-string "^((nil " "((nil . " (format "%S" sexp)))
 		      (write-file (expand-file-name ".dir-locals.el" path))
-		      (message (format "<ffip>: %s" (expand-file-name ".dir-locals.el" path))))))
+		      (message (format "<ffip>: %s" (expand-file-name ".dir-locals.el" path))))
+    (local:copy-packager path)))
 
 (defun local:stm32-keil-inc-path()
   "Return suggested Keil STM32 Include Path."
