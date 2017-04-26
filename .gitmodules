@@ -1,6 +1,3 @@
-[submodule "rust"]
-	path = rust
-	url = https://github.com/rust-lang/rust.git
 [submodule "doxymacs-code"]
 	path = doxymacs-code
 	url = http://git.code.sf.net/p/doxymacs/code

@@ -48,8 +48,6 @@
 ;; Language Support
 (require 'sup-common)
 (require 'sup-elisp)
-(require 'sup-elixir)
-(require 'sup-rust)
 (require 'sup-c)
 (require 'sup-python)
 (require 'sup-go)
