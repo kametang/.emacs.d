@@ -185,7 +185,6 @@
 									       sc-root))))))
     (local:c-make-dir-locals proj-conf-dir)
     (local:c-make-gitignore proj-conf-dir)))
-;; ))
 
 (use-package
   irony
@@ -197,6 +196,10 @@
     (interactive)
     (make-c-project)
     (irony-cdb-autosetup-compile-options))
+  (when (boundp 'w32-pipe-read-delay)
+    (setq w32-pipe-read-delay 0))
+  (when (boundp 'w32-pipe-buffer-size)
+    (setq w32-pipe-buffer-size (* 64 1024)))
   :bind ("<f7>" . irony-make-c-project))
 
 (use-package
@@ -213,7 +216,7 @@
 (use-package
   flycheck-irony
   :ensure t
-  :config (add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+  :config (add-hook 'flycheck-mode-hook 'flycheck-irony-setup))
 
 (use-package
   clang-format
@@ -235,11 +238,6 @@
 
 (defun local:c-load()
   (local-set-key (kbd "<C-return>") 'c-indent-new-comment-line)
-  (local-set-key (kbd "<f6>")
-		 (lambda()
-		   (interactive)
-		   (insert "fncmt")
-		   (call-interactively 'yas-expand)))
   (setq-default doxymacs-doxygen-style "C++"))
 
 (add-hook 'c-mode-hook 'local:common-load)
