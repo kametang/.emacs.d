@@ -4,7 +4,8 @@
 
 ;;; Code:
 
-(use-package doxymacs
+(use-package
+  doxymacs
   :load-path "doxymacs-code/lisp")
 
 ;; Provide
