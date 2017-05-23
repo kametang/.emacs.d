@@ -6,6 +6,7 @@
 
 (use-package
   ethan-wspace
+  :diminish ethan-wspace-mode
   :ensure t
   :config (setq-default ethan-wspace-errors (remove 'tabs ethan-wspace-errors))
   (setq-default show-trailing-whitespace nil)

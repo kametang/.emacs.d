@@ -4,7 +4,9 @@
 
 ;;; Code:
 
-(use-package anzu
+(use-package
+  anzu
+  :diminish anzu-mode
   :ensure t
   :bind (("C-b" . isearch-backward)
 	 ("C-r" . anzu-query-replace-regexp)))

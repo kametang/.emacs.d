@@ -4,6 +4,7 @@
 
 (use-package
   company
+  :diminish (abbrev-mode company-mode)
   :ensure t
   :config (setq company-auto-complete-chars (quote (32 95 40 41 119 46 34 36 39 60 32 47 124 33)))
   (setq company-idle-delay 0)

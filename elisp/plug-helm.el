@@ -4,6 +4,7 @@
 
 (use-package
   helm
+  :diminish helm-mode
   :ensure t
   :init (require 'helm-config)
   (setq-default helm-mode-fuzzy-match t)

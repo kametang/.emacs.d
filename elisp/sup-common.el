@@ -5,11 +5,13 @@
 ;;; Code:
 (use-package
   electric
+  :diminish electric-pair-mode
   :ensure t
   :config (electric-pair-mode))
 
 (use-package
   eldoc
+  :diminish eldoc-mode
   :ensure t)
 
 ;;; Work

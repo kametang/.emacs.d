@@ -6,6 +6,7 @@
 
 (use-package
   yasnippet
+  :diminish yas-minor-mode
   :ensure t
   :defer 2
   :config (yas-reload-all))

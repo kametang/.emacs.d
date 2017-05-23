@@ -188,6 +188,7 @@
 
 (use-package
   irony
+  :diminish irony-mode
   :ensure t
   :functions irony-make-clang-complete
   :config (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
