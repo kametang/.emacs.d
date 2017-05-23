@@ -5,21 +5,27 @@
 ;;; Code:
 
 ;; Theme
-(use-package color-theme-modern
+(use-package
+  moe-theme
   :ensure t
-  :config
-  (load-theme 'billw t))
-
-(use-package helm-themes
-  :ensure t
-  :config
-  (helm-themes--load-theme "billw"))
+  :config (load-theme 'moe-light t)
+  (moe-theme-set-color 'orange))
 
 ;; Power Line
-(use-package powerline
+(use-package
+  powerline
   :ensure t
-  :config
-  (powerline-default-theme))
+  :config (if (functionp 'powerline-moe-theme)
+	      (powerline-moe-theme)
+	    (powerline-default-theme)))
+
+;; Color
+(use-package
+  color-identifiers-mode
+  :diminish color-identifiers-mode
+  :ensure t
+  :config (add-hook 'after-init-hook 'global-color-identifiers-mode)
+  (add-hook 'after-find-file 'color-identifiers:refresh))
 
 ;; Provide
 (provide 'init-theme)
