@@ -31,11 +31,6 @@
   (setq paren-highlight-at-point t)
   (paren-activate))
 
-;; Highlight Line
-(global-hl-line-mode t)
-(set-face-background 'hl-line "white")
-(set-face-foreground 'hl-line "black")
-
 ;; Line Number
 (global-linum-mode t)
 
@@ -49,12 +44,9 @@
 ;; Always center
 (use-package
   centered-cursor-mode
+  :diminish centered-cursor-mode
   :ensure t
   :config (global-centered-cursor-mode t))
-
-;; Fonts
-(when (not(eq window-system 'nul))
-  (set-frame-font "Inconsolata 18"))
 
 ;; Provide
 (provide 'init-general)
