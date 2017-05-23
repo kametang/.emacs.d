@@ -2,10 +2,7 @@
 # name: timer
 # key: timer
 # --
-//--------------------------------------------------------------------------------------
-//      EXPORT METHODS - ${1:$(upcase yas-text)}
-//--------------------------------------------------------------------------------------
-void APP_TIMER_${1:Name}_Check(${2:void});
-void APP_TIMER_$1_Reset($2);
-bool APP_TIMER_$1_IsDone($2);
+void APP_Timer_${1:Name}_Check(${2:void});
+void APP_Timer_$1_Reset($2);
+bool APP_Timer_$1_Isset($2);
 $0

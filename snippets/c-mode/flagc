@@ -2,16 +2,13 @@
 # name: flagc
 # key: flagc
 # --
-//--------------------------------------------------------------------------------------
-//      EXPORT METHODS - ${1:$(upcase yas-text)}
-//--------------------------------------------------------------------------------------
-void APP_FLAG_${1:Name}_Set(${2:void}){
-     SYS_FLAG_Set(&${3:timer_variable});
+void APP_Flag_${1:Name}_Set(${2:int ${3:n}}){
+     FLAG_Set(&${4:timer_variable});
 }
-void APP_FLAG_$1_Reset($2){
-     SYS_FLAG_Reset(&$3);
+void APP_Flag_$1_Reset($2){
+     FLAG_Reset(&$4);
 }
-bool APP_FLAG_$1_Isset($2){
-     return SYS_FLAG_Isset(&$3);
+bool APP_Flag_$1_Isset($2){
+     return FLAG_Isset(&$4);
 }
 $0
