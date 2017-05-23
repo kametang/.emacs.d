@@ -232,13 +232,14 @@
   :config (defun local:c-format()
 	    "Format C File"
 	    (when (eq major-mode 'c-mode)
-	      (align (point-min)
-		     (point-max))
+	      (align-entire (point-min)
+			    (point-max))
 	      (clang-format-buffer)))
   (add-hook 'before-save-hook 'local:c-format))
 
 (defun local:c-load()
   (local-set-key (kbd "<C-return>") 'c-indent-new-comment-line)
+  (local-set-key (kbd "<M-return>") 'electric-indent-just-newline)
   (setq-default doxymacs-doxygen-style "C++"))
 
 (add-hook 'c-mode-hook 'local:common-load)
