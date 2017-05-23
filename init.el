@@ -6,6 +6,7 @@
 
 ;;; Custom File
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
 
 ;; Basic Settings
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
