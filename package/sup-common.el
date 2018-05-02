@@ -25,8 +25,8 @@
   (yas-minor-mode))
 
 ;; Dumb Jump
-(defun common:dumb-jump-load()
-  (dumb-jump-mode))
+;;(defun common:dumb-jump-load()
+;;  (dumb-jump-mode))
 
 ;; Eldoc
 (defun common:eldoc-load()
@@ -43,7 +43,7 @@
 (defvar local:load-list
   '((snippet  common:yasnippet-load)
     (lint  common:flycheck-load)
-    (jump  common:dumb-jump-load)
+    ;;   (jump  common:dumb-jump-load)
     (comp common:company-load)
     (doc common:eldoc-load)
     (sr common:anzu-load)))

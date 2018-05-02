@@ -5,19 +5,18 @@
 ;;; Code:
 
 ;; Theme
-(use-package
-  moe-theme
-  :ensure t
-  :config (load-theme 'moe-light t)
-  (moe-theme-set-color 'orange))
+;; (use-package
+;;   moe-theme
+;;   :ensure t
+;;   :config (load-theme 'moe-dark t)
+;;   (moe-theme-set-color 'orange))
 
-;; Power Line
 (use-package
-  powerline
+  grandshell-theme
   :ensure t
-  :config (if (functionp 'powerline-moe-theme)
-	      (powerline-moe-theme)
-	    (powerline-default-theme)))
+  :config (load-theme 'grandshell t))
+
+(set-frame-font "Ubuntu Mono 24")
 
 ;; Color
 (use-package

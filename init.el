@@ -11,7 +11,7 @@
 (load custom-file)
 
 ;; Basic Settings
-(add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "package" user-emacs-directory))
 
 ;; Package Settings
 (require 'package)
@@ -25,8 +25,12 @@
   (package-install 'use-package))
 (eval-when-compile
   (require 'use-package))
-(require 'diminish)
-(require 'bind-key)
+(use-package
+  diminish
+  :ensure t)
+(use-package
+  bind-key
+  :ensure t)
 
 ;; Time Evaluation
 ;; (require 'eva-time)
@@ -38,13 +42,15 @@
 
 ;; Package Settings
 (require 'plug-helm)
-(require 'plug-ffip)
+;; (require 'plug-ffip)
+(require 'plug-projectile)
 (require 'plug-flycheck)
 (require 'plug-trim-space)
 (require 'plug-anzu)
-(require 'plug-jump)
+;; (require 'plug-jump)
 (require 'plug-yasnippet)
 (require 'plug-doxy)
+(require 'plug-lsp)
 (require 'plug-company)
 (require 'plug-git)
 
@@ -52,8 +58,8 @@
 (require 'sup-common)
 (require 'sup-elisp)
 (require 'sup-c)
-(require 'sup-python)
-(require 'sup-go)
+;;(require 'sup-python)
+;;(require 'sup-go)
 (require 'sup-cmake)
 
 ;; Provide

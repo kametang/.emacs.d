@@ -1,3 +1,6 @@
 [submodule "doxymacs-code"]
-	path = doxymacs-code
+	path = module/doxymacs-code
 	url = http://git.code.sf.net/p/doxymacs/code
+[submodule "module/cquery"]
+	path = module/cquery
+	url = https://github.com/cquery-project/cquery

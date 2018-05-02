@@ -6,7 +6,7 @@
 
 (use-package
   doxymacs
-  :load-path "doxymacs-code/lisp")
+  :load-path "module/doxymacs-code/lisp")
 
 ;; Provide
 (provide 'plug-doxy)

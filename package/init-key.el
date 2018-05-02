@@ -13,7 +13,7 @@
     (progn (kill-whole-line))))
 
 ;; Quick Open init file
-(global-set-key (kbd "M-/")
+(global-set-key (kbd "C-x C-\\")
 		(lambda()
 		  (interactive)
 		  (find-file user-init-file)))
@@ -31,7 +31,7 @@
 						'(lambda ()
 						   (interactive)
 						   (mapc 'kill-buffer (buffer-list))))))
-(global-set-key (kbd "C-\\") 'delete-other-windows)
+					;(global-set-key (kbd "C-\\") 'delete-other-windows)
 
 ;; Buffer Operation
 (global-set-key (kbd "C-x C-w") 'kill-this-buffer)
@@ -68,6 +68,7 @@
 ;; Position
 (global-set-key (kbd "C-e") 'end-of-line)
 (global-set-key (kbd "C-q") 'beginning-of-line)
+(global-set-key (kbd "<select>") 'end-of-line)
 (global-set-key (kbd "<M-home>") 'beginning-of-buffer)
 (global-set-key (kbd "ESC <home>") 'beginning-of-buffer)
 (global-set-key (kbd "<M-end>") 'end-of-buffer)
@@ -113,7 +114,7 @@
 	   (comment-or-uncomment-region (region-beginning)
 					(region-end)))))
 (global-set-key (kbd "C-_") 'umkm:comment)
-(global-set-key (kbd "C-/") 'umkm:comment)
+(global-set-key (kbd "C-\\") 'umkm:comment)
 
 
 ;; Window

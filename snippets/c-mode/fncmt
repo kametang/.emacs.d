@@ -2,35 +2,26 @@
 # name: fncmt
 # key: fncmt
 # type: command
+# expand-env: ((yas-indent-line 'fixed))
 # --
+(setq-local yas-indent-line 'fixed)
 (let* ((next-func-alist (doxymacs-find-next-func))
        (func-name (cdr (assoc 'func next-func-alist)))
        (param-list (cdr (assoc 'args next-func-alist)))
        (return-name (cdr (assoc 'return next-func-alist)))
        (snippet-text "")
        (idx 1))
-  (setq snippet-text (format "/*%s\n" (make-string 84 ?-)))
-  (setq snippet-text (concat snippet-text (format " * FUNCTION: %s\n" func-name)))
-  (setq snippet-text (concat snippet-text (format " * PURPOSR :\n")))
-  (setq snippet-text (concat snippet-text (format " *\t\t$99\n")))
-  (setq snippet-text (concat snippet-text (format " * PARAM   :\n")))
+  (setq snippet-text (format "/%s/ /**\n" (make-string 73 ?*)))
+  (setq snippet-text (concat snippet-text (format " @fn %s\n\n" func-name)))
+  (setq snippet-text (concat snippet-text (format " @brief ${%d:function brief}\n\n" idx)))
+  (setq idx (+ 1 idx))
   (if param-list (dolist (param	param-list)
-		   (setq snippet-text (concat snippet-text (format " *\t\t- %s\n" param)))
-		   (setq snippet-text (concat snippet-text (format " *\t\t\t${%d:description}\n"
-								   idx)))
-		   (setq idx (+ 1 idx)))
-    (setq snippet-text (concat snippet-text " *\t\tNone\n")))
-  (setq snippet-text (concat snippet-text (format " * RETURN  :\n")))
+		   (setq snippet-text (concat snippet-text (format " @param %s ${%d:%s description}\n" param idx param)))
+		   (setq idx (+ 1 idx))))
+    (setq snippet-text (concat snippet-text "\n"))
   (if (and return-name
 	   (not (string= return-name "void")))
       (progn
-	(setq snippet-text (concat snippet-text (format " *\t\t- %s\n" return-name)))
-	(setq snippet-text (concat snippet-text (format " *\t\t\t${%d:description}\n" idx))))
-    (setq snippet-text (concat snippet-text " *\t\tNone\n")))
-  (setq snippet-text (concat snippet-text " * MODIFICATION HISTORY:\n"))
-  (setq snippet-text (concat snippet-text (format
-			     " * Date %s by DennyChang - The first revision for this function\n"
-			     (format-time-string "%Y/%m/%d"))))
-  (setq snippet-text (concat snippet-text (format " *%s\n" (make-string 84 ?-))))
-  (setq snippet-text (concat snippet-text (format " */$0")))
+	(setq snippet-text (concat snippet-text (format " @return %s ${%d: return description}\n" return-name idx)))))
+  (setq snippet-text (concat snippet-text (format "%s/$0" (make-string 78 ?*))))
   (yas/expand-snippet snippet-text))

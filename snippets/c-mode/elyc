@@ -1,27 +1,23 @@
 # -*- mode: snippet -*-
 # name: elyc
 # key: elyc
+# expand-env: ((yas-indent-line 'fixed))
 # --
-/***************************************************************************************
- *      Copyright(c) 2016 Elytone Electronic Co.Ltd All rights reserved.
+/******************************************************************************
+ *      Copyright(c) 2016-2018 Elytone Electronic Co.Ltd All rights reserved.
  *
- *      This is unpublished proprietary source code of Alpha Networks Incorporation
+ *      This is unpublished proprietary source code of
+ *      Elytone Electronic Co.,Ltd.
  *
  *      The copyright notice above does not evidence any actual or intended
  *      publication of such source code.
- ***************************************************************************************
+ ******************************************************************************
  */
-/*======================================================================================
- * FILE NAME: `(file-name-nondirectory (buffer-file-name))`
- * DATE: `(format-time-string "%Y/%m/%d")`
- * PURPOSE: ${1:Purpose}
- * NOTES:
- *
- * AUTHOR : Denny Chang         REVIEWED by
- *
- * * $History: $
- * MODIFICTION HISTORY:
- * Version 1.00 - Date `(format-time-string "%Y/%m/%d")` By Denny Chang
- *======================================================================================
- */
+/*************************************************************************/ /**
+ @file `(file-name-nondirectory (buffer-file-name))`
+
+ @date `(format-time-string "%Y/%m/%d")`
+
+ @author Denny Chang
+******************************************************************************/
 $0
