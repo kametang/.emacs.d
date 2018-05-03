@@ -3,22 +3,44 @@
 
 ;;; Code:
 
+;; (use-package
+;;   cquery
+;;   :ensure t
+;;   :functions km-cquery-enable
+;;   :config (defun km-cquery-enable()
+;; 	    (condition-case nil (lsp-cquery-enable)
+;; 	      (user-error
+;; 	       nil)))
+;;   ;; (setq cquery-executable (expand-file-name "module/cquery/build/release/bin/cquery"
+;;   ;; 					    user-emacs-directory))
+;;   (setq cquery-executable "/usr/bin/cquery")
+;;   (setq cquery-extra-args '("--log-file=/tmp/cq.log"))
+;;   (setq cquery-extra-init-params
+;; 	'(:index (:comments 2)
+;; 		 :extraClangArguments ("--driver-mode=cl")
+;; 		 :cacheFormat "msgpack"))
+;;   (add-hook 'c-mode-common-hook #'km-cquery-enable))
+
 (use-package
-  cquery
+  irony
   :ensure t
-  :functions km-cquery-enable
-  :config (defun km-cquery-enable()
-	    (condition-case nil (lsp-cquery-enable)
-	      (user-error
-	       nil)))
-  (setq cquery-executable (expand-file-name "module/cquery/build/release/bin/cquery"
-					    user-emacs-directory))
-  (setq cquery-extra-args '("--log-file=/tmp/cq.log"))
-  (setq cquery-extra-init-params
-	'(:index (:comments 2)
-		 :extraClangArguments ("--driver-mode=cl")
-		 :cacheFormat "msgpack"))
-  (add-hook 'c-mode-common-hook #'km-cquery-enable))
+  :config (add-hook 'c-mode-common-hook 'irony-mode)
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
+
+(use-package
+  irony-eldoc
+  :ensure t
+  :config (add-hook 'irony-mode-hook #'irony-eldoc))
+
+(use-package
+  company-irony
+  :ensure t
+  :config (add-to-list 'company-backends 'company-irony))
+
+(use-package
+  flycheck-irony
+  :ensure t
+  :config (add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 
 (use-package
   clang-format

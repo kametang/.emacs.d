@@ -12,7 +12,6 @@
        (snippet-text "")
        (idx 1))
   (setq snippet-text (format "/%s/ /**\n" (make-string 73 ?*)))
-  (setq snippet-text (concat snippet-text (format " @fn %s\n\n" func-name)))
   (setq snippet-text (concat snippet-text (format " @brief ${%d:function brief}\n\n" idx)))
   (setq idx (+ 1 idx))
   (if param-list (dolist (param	param-list)

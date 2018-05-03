@@ -4,19 +4,17 @@
 
 ;;; Code:
 
-;; Theme
-;; (use-package
-;;   moe-theme
-;;   :ensure t
-;;   :config (load-theme 'moe-dark t)
-;;   (moe-theme-set-color 'orange))
+(use-package
+  color-theme-sanityinc-tomorrow
+  :ensure t
+  :config (load-theme 'sanityinc-tomorrow-bright t))
+
+(set-frame-font "FiraCode 18")
 
 (use-package
-  grandshell-theme
+  powerline
   :ensure t
-  :config (load-theme 'grandshell t))
-
-(set-frame-font "Ubuntu Mono 24")
+  :config (powerline-center-theme))
 
 ;; Color
 (use-package

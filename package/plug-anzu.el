@@ -10,7 +10,8 @@
   :ensure t
   :bind (("C-b" . isearch-backward)
 	 ("C-f" . isearch-forward)
-	 ("C-r" . anzu-query-replace-regexp)))
+	 ("C-r" . anzu-query-replace-regexp)
+	 ("C-x C-r" . anzu-query-replace-at-cursor-thing)))
 
 ;; Provide
 (provide 'plug-anzu)

@@ -7,7 +7,8 @@
 (use-package
   projectile
   :ensure t
-  :config (projectile-mode))
+  :config (projectile-global-mode)
+  (setq projectile-enable-caching nil))
 
 (use-package
   helm-projectile
