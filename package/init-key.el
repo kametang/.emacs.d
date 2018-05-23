@@ -13,50 +13,36 @@
     (progn (kill-whole-line))))
 
 ;; Quick Open init file
-(global-set-key (kbd "C-x C-\\")
-		(lambda()
-		  (interactive)
-		  (find-file user-init-file)))
+(bind-key*  "M-/" (lambda()
+		    (interactive)
+		    (find-file user-init-file)))
 
-;; Encoding Fix
-(global-set-key (kbd "<f10>")
-		(lambda()
-		  (interactive)
-		  (set-buffer-file-coding-system 'utf-8-unix)))
 
 ;; Map Custom Key
-(global-set-key (kbd "C-x C-q") 'kill-emacs)
-(add-hook 'server-visit-hook '(lambda ()
-				(global-set-key (kbd "C-x C-q")
-						'(lambda ()
-						   (interactive)
-						   (mapc 'kill-buffer (buffer-list))))))
-					;(global-set-key (kbd "C-\\") 'delete-other-windows)
+(bind-key*  "C-x C-q" 'kill-emacs)
+(add-hook 'server-visit-hook (lambda ()
+			       (bind-key*  "C-x C-q" (lambda ()
+						       (interactive)
+						       (mapc 'kill-buffer (buffer-list))))))
 
 ;; Buffer Operation
-(global-set-key (kbd "C-x C-w") 'kill-this-buffer)
-(global-set-key (kbd "<C-next>") 'next-buffer)
-(global-set-key (kbd "<C-prior>") 'previous-buffer)
+(bind-key*  "C-x C-w" 'kill-this-buffer)
 
 ;; File Operations
-(global-set-key (kbd "M-o") 'find-file-at-point)
+(bind-key*  "M-o" 'find-file-at-point)
 
 ;; Content Operations
-(global-set-key (kbd "C-x C-a") 'mark-whole-buffer)
-(global-set-key (kbd "C-x C-x") 'cut-region-or-line)
-(global-set-key (kbd "C-x C-v") 'yank)
-(global-set-key (kbd "C-x C-c")
-		(lambda()
-		  (interactive)
-		  (cut-region-or-line)
-		  (yank)))
-(global-set-key (kbd "C-x C-d")
-		(lambda()
-		  (interactive)
-		  (kill-whole-line)
-		  (undo)
-		  (yank)
-		  (line-move -1)))
+(bind-key* "M-DEL" 'backward-kill-word)
+(bind-key* "ESC <deletechar>" 'kill-word)
+
+(bind-key*  "C-x C-a" 'mark-whole-buffer)
+(bind-key*  "C-x C-x" 'cut-region-or-line)
+(bind-key*  "C-x C-v" 'yank)
+(bind-key*  "C-x C-c" (lambda()
+			(interactive)
+			(cut-region-or-line)
+			(yank)))
+
 
 ;; Undo/Redo
 (use-package
@@ -66,34 +52,45 @@
   :bind (("C-z" . undo)))
 
 ;; Position
-(global-set-key (kbd "C-e") 'end-of-line)
-(global-set-key (kbd "C-q") 'beginning-of-line)
-(global-set-key (kbd "<select>") 'end-of-line)
-(global-set-key (kbd "<M-home>") 'beginning-of-buffer)
-(global-set-key (kbd "ESC <home>") 'beginning-of-buffer)
-(global-set-key (kbd "<M-end>") 'end-of-buffer)
-(global-set-key (kbd "ESC <end>") 'end-of-buffer)
-(global-set-key (kbd "<M-prior>") 'backward-paragraph)
-(global-set-key (kbd "<M-next>") 'forward-paragraph)
-(global-set-key (kbd "<M-up>")
-		(lambda()
-		  (interactive)
-		  (kill-whole-line)
-		  (line-move -1)
-		  (move-beginning-of-line 1)
-		  (yank)
-		  (line-move -1)
-		  (move-beginning-of-line 1)))
-(global-set-key (kbd "<M-down>")
-		(lambda()
-		  (interactive)
-		  (kill-whole-line)
-		  (line-move 1)
-		  (move-beginning-of-line 1)
-		  (yank)
-		  (line-move -1)
-		  (move-beginning-of-line 1)))
-(global-set-key (kbd "C-g") 'goto-line)
+(bind-key*  "C-e" 'end-of-line)
+(bind-key*  "C-q" 'beginning-of-line)
+(bind-key*  "C-a" 'backward-word)
+(bind-key*  "C-d" 'forward-word)
+
+(bind-key*  "<home>" 'beginning-of-line)
+(bind-key*  "<select>" 'end-of-line)
+(bind-key*  "<end>" 'end-of-line)
+
+(bind-key*  "C-x <home>" 'beginning-of-buffer)
+(bind-key*  "C-x <select>" 'end-of-buffer)
+(bind-key*  "C-x <end>" 'end-of-buffer)
+
+(defun km-move-line-up()
+  "Move current line up"
+  (interactive)
+  (kill-whole-line)
+  (line-move -1)
+  (move-beginning-of-line 1)
+  (yank)
+  (line-move -1)
+  (move-beginning-of-line 1))
+
+(defun km-move-line-down()
+  "Move current line down"
+  (interactive)
+  (kill-whole-line)
+  (line-move 1)
+  (move-beginning-of-line 1)
+  (yank)
+  (line-move -1)
+  (move-beginning-of-line 1))
+
+(bind-key* "C-M-o" 'km-move-line-up)
+(bind-key* "ESC <up>" 'km-move-line-up)
+(bind-key* "C-M-l" 'km-move-line-down)
+(bind-key* "ESC <down>" 'km-move-line-down)
+
+(bind-key*  "C-g" 'goto-line)
 
 ;; Comment
 (defun umkm:comment()
@@ -113,12 +110,14 @@
 	   (move-end-of-line 1)
 	   (comment-or-uncomment-region (region-beginning)
 					(region-end)))))
-(global-set-key (kbd "C-_") 'umkm:comment)
-(global-set-key (kbd "C-\\") 'umkm:comment)
+(bind-key*  "C-/" 'umkm:comment)
+(bind-key*  "C-\\" 'umkm:comment)
 
 
 ;; Window
-(global-set-key (kbd "<C-tab>") 'other-window)
+(bind-key*  "<C-tab>" 'other-window)
+(bind-key*  "<insert>" 'keyboard-escape-quit)
+(bind-key*  "<insertchar>" 'keyboard-escape-quit)
 
 ;; Provide
 (provide 'init-key)

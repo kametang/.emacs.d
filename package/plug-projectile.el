@@ -8,13 +8,18 @@
   projectile
   :ensure t
   :config (projectile-global-mode)
-  (setq projectile-enable-caching nil))
+  (setq projectile-enable-caching nil)
+  :bind (("C-x C-o" . projectile-find-other-file)))
+
+;; (use-package
+;;   helm-projectile
+;;   :ensure t
+;;   :bind ("C-o" . helm-projectile-find-file))
 
 (use-package
-  helm-projectile
+  counsel-projectile
   :ensure t
-  :bind ("C-o" . helm-projectile-find-file))
-
+  :bind (("C-o" . counsel-projectile-find-file)))
 
 
 ;; Provide

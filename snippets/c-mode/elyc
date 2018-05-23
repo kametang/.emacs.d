@@ -13,11 +13,11 @@
  *      publication of such source code.
  ******************************************************************************
  */
-/*************************************************************************/ /**
- @file `(file-name-nondirectory (buffer-file-name))`
-
- @date `(format-time-string "%Y/%m/%d")`
-
- @author Denny Chang
-******************************************************************************/
+/**
+ * @file `(file-name-nondirectory (buffer-file-name))`
+ *
+ * @date `(format-time-string "%Y/%m/%d")`
+ *
+ * @author Denny <DennyChang@elytone.com.tw>
+ */
 $0

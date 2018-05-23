@@ -16,7 +16,8 @@
 ;; Package Settings
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa-stable" . "https://melpa.org/packages/") t)
+;; (add-to-list 'package-archives '("melpa-stable" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
 (package-initialize)
 
 ;; Use-package Init
@@ -41,18 +42,20 @@
 (require 'init-theme)
 
 ;; Package Settings
-(require 'plug-helm)
+;; (require 'plug-helm)
+(require 'plug-ivy)
 ;; (require 'plug-ffip)
 (require 'plug-projectile)
 (require 'plug-flycheck)
 (require 'plug-trim-space)
 (require 'plug-anzu)
-;; (require 'plug-jump)
-(require 'plug-yasnippet)
+(require 'plug-jump)
 (require 'plug-doxy)
-(require 'plug-lsp)
 (require 'plug-company)
+(require 'plug-yasnippet)
+(require 'plug-lsp)
 (require 'plug-git)
+(require 'plug-fold)
 
 ;; Language Support
 (require 'sup-common)

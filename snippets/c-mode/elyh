@@ -13,26 +13,30 @@
  *      publication of such source code.
  ******************************************************************************
  */
-/*************************************************************************/ /**
- @file `(file-name-nondirectory (buffer-file-name))`
+/**
+ * @file `(file-name-nondirectory (buffer-file-name))`
+ *
+ * @brief ${1:file brief}
+ *
+ * @date `(format-time-string "%Y/%m/%d")`
+ *
+ * @author Denny <DennyChang@elytone.com.tw>
+ */
+#ifndef __$2`(upcase (file-name-nondirectory (file-name-sans-extension buffer-file-name)))`_H
+#define __$2`(upcase (file-name-nondirectory (file-name-sans-extension buffer-file-name)))`_H
 
- @brief ${1:file brief}
-
- @date `(format-time-string "%Y/%m/%d")`
-
- @author Denny Chang
-******************************************************************************/
-#ifndef ${2:__`(upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))`_H__}
-#define $2
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+
 $0
+
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* $2 */
+
+#endif /* __$2`(upcase (file-name-nondirectory (file-name-sans-extension buffer-file-name)))`_H */

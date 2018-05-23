@@ -11,16 +11,19 @@
        (return-name (cdr (assoc 'return next-func-alist)))
        (snippet-text "")
        (idx 1))
-  (setq snippet-text (format "/%s/ /**\n" (make-string 73 ?*)))
-  (setq snippet-text (concat snippet-text (format " @brief ${%d:function brief}\n\n" idx)))
+  (setq snippet-text "/**\n")
+  (setq snippet-text (concat snippet-text (format " * @brief ${%d:function brief}\n" idx)))
   (setq idx (+ 1 idx))
-  (if param-list (dolist (param	param-list)
-		   (setq snippet-text (concat snippet-text (format " @param %s ${%d:%s description}\n" param idx param)))
-		   (setq idx (+ 1 idx))))
-    (setq snippet-text (concat snippet-text "\n"))
+  (if param-list
+  (progn
+  (setq snippet-text (concat snippet-text " *\n"))
+  (dolist (param	param-list)
+		   (setq snippet-text (concat snippet-text (format " * @param %s ${%d:%s description}\n" param idx param)))
+		   (setq idx (+ 1 idx)))
+    ))
   (if (and return-name
-	   (not (string= return-name "void")))
+	   (and (not (string= return-name "void")) (not (string= return-name "define"))))
       (progn
-	(setq snippet-text (concat snippet-text (format " @return %s ${%d: return description}\n" return-name idx)))))
-  (setq snippet-text (concat snippet-text (format "%s/$0" (make-string 78 ?*))))
+	(setq snippet-text (concat snippet-text (format " *\n * @return %s ${%d: return description}\n" return-name idx)))))
+  (setq snippet-text (concat snippet-text " */$0"))
   (yas/expand-snippet snippet-text))

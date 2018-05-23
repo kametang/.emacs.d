@@ -7,7 +7,7 @@
 (use-package
   flycheck
   :ensure t
-  :init (setq-default flycheck-check-syntax-automatically '(save))
+  :init (setq-default flycheck-check-syntax-automatically '(save mode-enabled))
   (setq-default flycheck-highlighting-mode 'lines)
   (setq-default flycheck-display-errors-function 'ignore)
   (setq-default flycheck-emacs-lisp-load-path 'inherit)
