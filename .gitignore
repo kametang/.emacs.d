@@ -2,3 +2,7 @@ projectile-bookmarks.eld
 elpa/
 auto-save-list/
 smex-items
+custom.el
+recentf
+srecode-map.el
+projectile.cache

@@ -12,7 +12,8 @@
 (require 'package) ;; Start of Package
 
 ;; Package Sources
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/"))
 
 (setq package-enable-at-startup nil) ;; Avoid initialize twice
 
@@ -21,20 +22,20 @@
 (defvar umkm/package-refresh-p nil) ;; Flag to avoid multiple refresh package
 
 ;; Refresh package if first time run
-(unless (file-exists-p package-user-dir) 
-  (package-refresh-contents) 
+(unless (file-exists-p package-user-dir)
+  (package-refresh-contents)
   (setq umkm/package-refresh-p t))
 
 ;; Ensure package is installed
-(defun umkm/ensure-packages 
-    (&rest 
-     packages)
+(defun umkm/ensure-packages (&rest packages)
   "Ensure PACKAGES is installed. If not, it's will auto install for it."
-  (mapcar (lambda (package) 
-	    (unless (package-installed-p package) 
-	      (unless umkm/package-refresh-p (package-refresh-contents) 
-		      (setq umkm/package-refresh-p t)) 
-	      (package-install package))) packages))
+  (mapcar (lambda (package)
+	    (unless (package-installed-p package)
+	      (unless umkm/package-refresh-p
+		(package-refresh-contents)
+		(setq umkm/package-refresh-p t))
+	      (package-install package)))
+	  packages))
 
 
 ;; ----------------
@@ -44,62 +45,87 @@
  ;; ------------
  ;; Dependencies
  ;; ------------
- 'pos-tip	       ;; Tooltip
- 'flx		       ;; Fuzzy
- 'smex		       ;; Recent
+ 'pos-tip ;; Tooltip
+ 'flx ;; Fuzzy
+ 'smex ;; Recent
+ 'popup ;; Popup
  ;; -----
  ;; Theme
  ;; -----
- 'cyberpunk-theme      ;; Color Scheme
- 'powerline	       ;; Power line
+ 'cyberpunk-theme ;; Color Scheme
+ 'powerline ;; Power line
  'centered-cursor-mode ;; Always Vertical Centered current line
- 'rainbow-delimiters   ;; Highlight delimiters.
- 'diff-hl	       ;; Highlight Diff
+ 'rainbow-delimiters ;; Highlight delimiters.
+ 'diff-hl ;; Highlight Diff
+ 'mic-paren ;; Highlight paren
  ;; ----
  ;; Misc
  ;; ----
- 'restart-emacs	       ;; Restart emacs simplify
- 'diminish	       ;; Disable minor mode symbol
+ 'restart-emacs ;; Restart emacs simplify
+ 'diminish ;; Disable minor mode symbol
  ;; --------
  ;; Key Bind
  ;; --------
- 'use-package	       ;; Provide bind-key*
+ 'use-package ;; Provide bind-key*
  ;; -----------
  ;; Programming
  ;; -----------
- 'company	       ;; Auto Complete Engine
- 'company-quickhelp    ;; Help for complete
- 'yasnippet	       ;; Snippet Engine
- 'flycheck	       ;; Lint
- 'lsp-mode	       ;; Language Service Protocol
- 'lsp-ui	       ;; LSP User Interface
- 'company-lsp	       ;; LSP backend for Company
+ 'company ;; Auto Complete Engine
+ 'company-quickhelp ;; Help for complete
+ 'yasnippet ;; Snippet Engine
+ 'flycheck ;; Lint
+ 'flycheck-pos-tip ;; Lint on tooltip
+ 'lsp-mode ;; Language Service Protocol
+ 'lsp-ui ;; LSP User Interface
+ 'company-lsp ;; LSP backend for Company
  ;; ---
  ;; Ivy
  ;; ---
- 'ivy		       ;; Ivy
- 'counsel	       ;; Extension
- 'swiper	       ;; Search
+ 'ivy ;; Ivy
+ 'counsel ;; Extension
+ 'swiper ;; Search
  ;; ---------------
  ;; Text Operations
  ;; ---------------
  'whole-line-or-region ;; Auto line operation when not region
- 'move-text	       ;; Move text up/down
- 'undo-tree	       ;; Undo/Redo
- 'anzu		       ;; Replace with Regexp
- 'yafolding	       ;; Fold
- 'expand-region	       ;; Expand Selection
- 'hungry-delete	       ;; Hungry delete
- 'mwim		       ;; Advanced move to begin/end
+ 'move-text ;; Move text up/down
+ 'undo-tree ;; Undo/Redo
+ 'anzu ;; Replace with Regexp
+ 'expand-region ;; Expand Selection
+ 'hungry-delete ;; Hungry delete
+ 'mwim ;; Advanced move to begin/end
+ 'whitespace-cleanup-mode ;; Remove white space
+
  ;; -------
  ;; Project
  ;; -------
- 'projectile	     ;; Project
+ 'projectile ;; Project
  'counsel-projectile ;; Counsel binding for Projectile
+
  ;; ----
  ;; File
  ;; ----
  'neotree ;; File Manager
+
+ ;; ---------------
+ ;; Language: Elisp
+ ;; ---------------
+ 'srefactor ;; Format
+ 'lisp-extra-font-lock ;; Font-Lock
+
+ ;; ---------------
+ ;; Language: CMake
+ ;; ---------------
+ 'cmake-mode ;; CMake Mode
+ 'cmake-font-lock ;; Font-lock
+
+ ;; ---------------
+ ;; Language: C/C++
+ ;; ---------------
+ 'clang-format ;; Format
+ 'cquery ;; LSP
+ 'preproc-font-lock ;; preprocess font lock
+
 
  ;; -------
  ;; Archive
@@ -108,6 +134,8 @@
  ;; 'iedit		       ;; Ctrl-D
  ;; 'aggressive-indent    ;; Auto Indent
  ;;'volatile-highlights ;; Highlight volatile
+ ;; 'yafolding	       ;; Fold
+ ;; 'yasnippet-snippets ;; Official snippets
 
  ;; ----
  ;; Test
@@ -115,8 +143,9 @@
  )
 
 ;;; --------------------------------------------------- PACKAGE NON OFFICIAL --
-(add-to-list 'load-path (expand-file-name "nonofficial/doxymacs" user-emacs-directory))
-(require 'doxymacs)
+(add-to-list 'load-path
+	     (expand-file-name "nonofficial/doxymacs" user-emacs-directory))
+(load "doxymacs.el")
 
 
 ;;; ---------------------------------------------------------------- GENERAL --
@@ -128,8 +157,7 @@
 ;; --------------------------
 ;; Enable all local variables
 ;; --------------------------
-(setq enable-local-variables 
-      :all)
+(setq enable-local-variables :all)
 
 ;; ----------------
 ;; Speed startup up
@@ -147,6 +175,7 @@
 (setq version-control nil)
 (setq delete-old-versions t)
 (setq auto-save-default nil)
+(setq auto-save-interval 0)
 
 ;; ----------------------
 ;; Disable GUI Components
@@ -155,6 +184,12 @@
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 
+;; ---------
+;; Auto Pair
+;; ---------
+(require 'electric)
+(electric-pair-mode t)
+
 ;; -------------
 ;; Enable Rulers
 ;; -------------
@@ -162,24 +197,28 @@
 (column-number-mode 1)
 (line-number-mode 1)
 
-
 ;; -----
 ;; Theme
 ;; -----
 (load-theme 'cyberpunk t)
 (require 'powerline)
 (powerline-center-theme)
+(global-hl-line-mode t)
+(show-paren-mode t)
+
+(diminish 'abbrev-mode)
 
 
 ;; -----
 ;; Fonts
 ;; -----
-(cond ((find-font (font-spec :name "FiraCode")) 
-       (set-frame-font "FiraCode 18")) 
-      ((find-font (font-spec :name "Fira Code")) 
-       (set-frame-font "Fira Code 18")) 
-      ((find-font (font-spec :name "Ubuntu Mono")) 
-       (set-frame-font "Ubuntu Mono 18")))
+(cond
+ ((find-font (font-spec :name "FiraCode"))
+  (set-frame-font "FiraCode 18"))
+ ((find-font (font-spec :name "Fira Code"))
+  (set-frame-font "Fira Code 18"))
+ ((find-font (font-spec :name "Ubuntu Mono"))
+  (set-frame-font "Ubuntu Mono 18")))
 
 
 
@@ -194,15 +233,21 @@
 (add-hook 'prog-mode-hook #'company-mode)
 (diminish 'company-mode)
 (setq-default company-idle-delay 0)
-(setq-default company-minimum-prefix-length 3)
+(setq-default company-minimum-prefix-length
+	      3)
 (setq-default company-echo-delay 0)
 (setq-default company-tooltip-limit 5)
 (setq-default company-begin-commands '(self-insert-command))
-(setq-default company-tooltip-align-annotations t)
-(setq-default company-tooltip-offset-display 'lines)
-(setq-default company-tooltip-flip-when-above t)
-(setq-default company-dabbrev-code-ignore-case t)
-(add-to-list 'completion-styles 'initials t)
+(setq-default company-tooltip-align-annotations
+	      t)
+(setq-default company-tooltip-offset-display
+	      'lines)
+(setq-default company-tooltip-flip-when-above
+	      t)
+(setq-default company-dabbrev-code-ignore-case
+	      t)
+(add-to-list 'completion-styles 'initials
+	     t)
 (setq-default company-backends '(company-capf company-files company-semantic))
 
 
@@ -233,12 +278,11 @@
 ;;; ------------------------------------------------------- PLUGIN: FLYCHECK --
 (require 'flycheck)
 (setq-default flycheck-check-syntax-automatically '(save mode-enabled))
+(add-hook 'prog-mode-hook #'flycheck-mode)
+(setq-default sentence-end-double-space nil)
+(require 'flycheck-pos-tip)
+(add-hook 'flycheck-mode-hook #'flycheck-pos-tip-mode)
 
-
-;;; ------------------------------------------------------ PLUGIN: YAFOLDING --
-(require 'yafolding)
-(add-hook 'prog-mode-hook #'yafolding-mode)
-(add-hook 'yafolding-mode-hook #'yafolding-hide-all)
 
 ;;; ------------------------------------------------------------ PLUGIN: IVY --
 (require 'ivy)
@@ -247,7 +291,8 @@
 (ivy-mode 1)
 (diminish 'ivy-mode)
 (setq-default ivy-use-virtual-buffers t)
-(setq-default enable-recursive-minibuffers t)
+(setq-default enable-recursive-minibuffers
+	      t)
 (setq-default ivy-count-format "(%d/%d) ")
 (setq-default ivy-re-builders-alist '((t . ivy--regex-fuzzy)))
 (setq-default ivy-use-selectable-prompt t)
@@ -258,8 +303,9 @@
 (require 'company-lsp)
 (add-hook 'lsp-mode-hook #'lsp-ui-mode)
 (setq-default company-lsp-async nil)
-(add-hook 'lsp-mode-hook #'(lambda() 
-			     (add-to-list 'company-backends 'company-lsp)))
+(add-hook 'lsp-mode-hook
+	  #'(lambda ()
+	      (add-to-list 'company-backends 'company-lsp)))
 
 ;;; ----------------------------------------------------- PLUGIN: PROJECTILE --
 (require 'projectile)
@@ -291,36 +337,47 @@
 (require 'mwim)
 
 
-;;; ------------------------------------------------------- PLUGIN: FLYCHECK --
-(require 'flycheck)
-(add-hook 'prog-mode-hook #'flycheck-mode)
-(setq-default sentence-end-double-space nil)
+
+;;; ------------------------------------------------------ PLUGIN: MIC-PAREN --
+(require 'mic-paren)
+(paren-activate)
+(setq-default paren-match-face 'highlight)
+(setq-default paren-sexp-mode t)
+(setq-default paren-highlight-offscreen t)
+
+
+;;; ----------------------------------------------- PLUGIN: WHITESPACE CLEAN --
+(require 'whitespace-cleanup-mode)
+(add-hook 'prog-mode-hook #'whitespace-cleanup-mode)
+(diminish 'whitespace-cleanup-mode)
 
 ;;; -------------------------------------------------------- CUSTOM FUNCTION --
 ;; ----------------------
 ;; Comment Line or Region
 ;; ----------------------
-(defun umkm/comment() 
-  "Comment Line or Region" 
-  (interactive) 
-  (if (use-region-p) 
-      (let ((rs (min (region-beginning) 
-		     (region-end))) 
-	    (re (max (region-beginning) 
-		     (region-end)))) 
-	(goto-char re) 
-	(setq ce (line-end-position)) 
-	(goto-char rs) 
-	(setq cs (line-beginning-position)) 
-	(comment-or-uncomment-region cs ce)) 
-    (progn (comment-line 1) 
-	   (forward-line -1))))
+(defun umkm/comment ()
+  "Comment Line or Region."
+  (interactive)
+  (if (use-region-p)
+      (let ((cs (line-beginning-position (+ (- (line-number-at-pos (min (region-beginning)
+									(region-end)))
+					       (line-number-at-pos (point)))
+					    1)))
+	    (ce (line-end-position (+ (- (line-number-at-pos (max (region-beginning)
+								  (region-end)))
+					 (line-number-at-pos (point)))
+				      1))))
+	(comment-or-uncomment-region cs ce))
+    (progn
+      (comment-line 1)
+      (forward-line -1))))
 
 ;;; -------------------------------------------------------------- KEY BINDS --
 ;; Emacs Global Operation
-(bind-key* "M-/" #'(lambda() 
-		     (interactive) 
-		     (find-file (expand-file-name "init.el" user-emacs-directory))))
+(bind-key* "M-/"
+	   #'(lambda ()
+	       (interactive)
+	       (find-file (expand-file-name "init.el" user-emacs-directory))))
 (bind-key* "C-x C-q" #'kill-emacs)
 (bind-key* "C-x C-w" #'kill-this-buffer)
 (bind-key* "M-x" #'counsel-M-x)
@@ -355,28 +412,43 @@
 
 ;; Jump
 (bind-key* "<home>" #'mwim-beginning-of-code-or-line-or-comment)
-(bind-key* "<end>" #'mwim-end-of-code-or-line)
+(bind-key* "<end>" #'mwim-end-of-line)
 (bind-key* "C-g" #'goto-line)
 (bind-key* "C-f" #'swiper)
-(bind-key* "C-c <up>" #'flycheck-previous-error)
-(bind-key* "C-c <down>" #'flycheck-next-error)
+(bind-key* "<f12>"
+	   #'(lambda ()
+	       (interactive)
+	       (if (flycheck-next-error-pos 1)
+		   (flycheck-next-error)
+		 (flycheck-previous-error))))
+
+
 
 ;; Comment
 (bind-key* "C-/" #'umkm/comment)
+(bind-key* "C-_" #'umkm/comment)
 
 ;; Clear
 (bind-key* "<insert>" #'keyboard-escape-quit)
-
-;; Folding
-(bind-key* "C-x C-/" #'yafolding-toggle-element)
-(bind-key* "C-x C-h" #'yafolding-hide-all)
-
+(bind-key* "<insertchar>" #'keyboard-escape-quit)
 
 ;; Panel
 (bind-key* "<f8>" #'neotree-toggle)
 
+
 ;;; ------------------------------------------------------- LANGUAGE SUPPORT --
-(add-to-list 'load-path (expand-file-name "language" user-emacs-directory))
-(require 'elisp-lang)
+(add-to-list 'load-path
+	     (expand-file-name "language" user-emacs-directory))
+(load "elisp-lang.el")
+(load "cmake-lang.el")
+(load "c-lang.el")
+
+
+;;; ------------------------------------------------------------ NEW PROJECT --
+(add-to-list 'load-path
+	     (expand-file-name "new-project" user-emacs-directory))
+(load "new-project.el")
+
+;;; ------------------------------------------------------------------- TEST --
 
 ;;; init.el ends here
