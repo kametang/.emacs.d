@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: acmt
+# key: ac
+# type: command
+# --
+(let* ((snippet-text "/*!< ${1:Brief} */"))
+(yas/expand-snippet snippet-text))

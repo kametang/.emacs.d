@@ -1,0 +1,42 @@
+# -*- mode: snippet -*-
+# name: elyh
+# key: elyh
+# expand-env: ((yas-indent-line 'fixed))
+# --
+/******************************************************************************
+ *      Copyright(c) 2016-2018 Elytone Electronic Co.Ltd All rights reserved.
+ *
+ *      This is unpublished proprietary source code of
+ * 	Elytone Electroic Co.,Ltd.
+ *
+ *      The copyright notice above does not evidence any actual or intended
+ *      publication of such source code.
+ ******************************************************************************
+ */
+/**
+ * @file `(file-name-nondirectory (buffer-file-name))`
+ *
+ * @brief ${1:file brief}
+ *
+ * @date `(format-time-string "%Y/%m/%d")`
+ *
+ * @author Denny <DennyChang@elytone.com.tw>
+ */
+#ifndef __$2`(upcase (file-name-nondirectory (file-name-sans-extension buffer-file-name)))`_H
+#define __$2`(upcase (file-name-nondirectory (file-name-sans-extension buffer-file-name)))`_H
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+$0
+
+
+#ifdef __cplusplus
+}
+#endif
+
+
+#endif /* __$2`(upcase (file-name-nondirectory (file-name-sans-extension buffer-file-name)))`_H */

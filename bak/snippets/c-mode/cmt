@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: cmt
+# key: cm
+# expand-env: ((yas-indent-line 'fixed))
+# --
+/**
+ * @brief ${1:Description}$0
+ */

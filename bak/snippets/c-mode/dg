@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: dg
+# key: dg
+# expand-env: ((yas-indent-line 'fixed))
+# --
+/**
+ * @defgroup ${1:label} ${2:Header}
+ *
+ * @brief ${3:brief}$0
+ */

@@ -1,0 +1,16 @@
+.python-environments
+elpa
+auto-save-list
+*~
+\#*\#
+*.eld
+*.cache
+smex-items
+eshell
+server
+ido.last
+ac-comphist.dat
+.mc-lists.el
+custom.el
+recentf
+bookmarks

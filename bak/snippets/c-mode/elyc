@@ -1,0 +1,23 @@
+# -*- mode: snippet -*-
+# name: elyc
+# key: elyc
+# expand-env: ((yas-indent-line 'fixed))
+# --
+/******************************************************************************
+ *      Copyright(c) 2016-2018 Elytone Electronic Co.Ltd All rights reserved.
+ *
+ *      This is unpublished proprietary source code of
+ *      Elytone Electronic Co.,Ltd.
+ *
+ *      The copyright notice above does not evidence any actual or intended
+ *      publication of such source code.
+ ******************************************************************************
+ */
+/**
+ * @file `(file-name-nondirectory (buffer-file-name))`
+ *
+ * @date `(format-time-string "%Y/%m/%d")`
+ *
+ * @author Denny <DennyChang@elytone.com.tw>
+ */
+$0
