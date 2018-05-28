@@ -1,0 +1,29 @@
+# -*- mode: snippet -*-
+# name: doxygen-comment
+# key: @@
+# type: command
+# expand-env: ((yas-indent-line 'fixed))
+# --
+(setq-local yas-indent-line 'fixed)
+(let* ((next-func-alist (doxymacs-find-next-func))
+       (func-name (cdr (assoc 'func next-func-alist)))
+       (param-list (cdr (assoc 'args next-func-alist)))
+       (return-name (cdr (assoc 'return next-func-alist)))
+       (snippet-text "")
+       (idx 1))
+  (setq snippet-text "/**\n")
+  (setq snippet-text (concat snippet-text (format " * @brief ${%d:function brief}\n" idx)))
+  (setq idx (+ 1 idx))
+  (if param-list
+  (progn
+  (setq snippet-text (concat snippet-text " *\n"))
+  (dolist (param	param-list)
+		   (setq snippet-text (concat snippet-text (format " * @param %s ${%d:%s description}\n" param idx param)))
+		   (setq idx (+ 1 idx)))
+    ))
+  (if (and return-name
+	   (and (not (string= return-name "void")) (not (string= return-name "define"))))
+      (progn
+	(setq snippet-text (concat snippet-text (format " *\n * @return %s ${%d: return description}\n" return-name idx)))))
+  (setq snippet-text (concat snippet-text " */$0"))
+  (yas/expand-snippet snippet-text))

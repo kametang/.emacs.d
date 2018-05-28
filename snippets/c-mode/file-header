@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: file-header
+# key: fh
+# --
+/**
+ * @file `(file-name-nondirectory (buffer-file-name))`
+ *
+ * @brief ${1:file brief}
+ *
+ * @date `(format-time-string "%Y/%m/%d")`
+ */
+ $0

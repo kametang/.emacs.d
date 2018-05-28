@@ -25,7 +25,8 @@
       (copy-file (expand-file-name ".projectile"
 				   (expand-file-name "new-project" user-emacs-directory))
 		 (expand-file-name ".projectile" directory)
-		 t))))
+		 t)))
+  (restart-emacs))
 
 ;; Provide
 (provide 'new-project)

@@ -204,8 +204,9 @@
 (require 'powerline)
 (powerline-center-theme)
 (global-hl-line-mode t)
+(global-hi-lock-mode t)
+(diminish 'hi-lock-mode)
 (show-paren-mode t)
-
 (diminish 'abbrev-mode)
 
 
@@ -303,6 +304,8 @@
 (require 'company-lsp)
 (add-hook 'lsp-mode-hook #'lsp-ui-mode)
 (setq-default company-lsp-async nil)
+(setq-default company-lsp-cache-candidates
+	      nil)
 (add-hook 'lsp-mode-hook
 	  #'(lambda ()
 	      (add-to-list 'company-backends 'company-lsp)))
@@ -350,6 +353,10 @@
 (require 'whitespace-cleanup-mode)
 (add-hook 'prog-mode-hook #'whitespace-cleanup-mode)
 (diminish 'whitespace-cleanup-mode)
+
+
+;;; ------------------------------------------------------- PLUGIN: DIMINISH --
+(diminish 'eldoc-mode)
 
 ;;; -------------------------------------------------------- CUSTOM FUNCTION --
 ;; ----------------------
@@ -409,6 +416,7 @@
 (bind-key* "C-r" #'anzu-query-replace-regexp)
 (bind-key* "C-x C-r" #'anzu-query-replace-at-cursor)
 (bind-key* "C-=" #'er/expand-region)
+(bind-key* "M-=" #'er/expand-region)
 
 ;; Jump
 (bind-key* "<home>" #'mwim-beginning-of-code-or-line-or-comment)
@@ -420,7 +428,8 @@
 	       (interactive)
 	       (if (flycheck-next-error-pos 1)
 		   (flycheck-next-error)
-		 (flycheck-previous-error))))
+		 (flycheck-previous-error))
+	       (flycheck-explain-error-at-point)))
 
 
 

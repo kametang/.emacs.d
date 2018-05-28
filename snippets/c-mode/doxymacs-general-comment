@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: doxymacs-general-comment
+# key: @
+# --
+/**
+ * @brief ${1:Description}$0
+ */

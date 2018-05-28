@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: c-header
+# key: ch
+# --
+#ifndef __$1`(upcase (file-name-nondirectory (file-name-sans-extension buffer-file-name)))`_H
+#define __$1`(upcase (file-name-nondirectory (file-name-sans-extension buffer-file-name)))`_H
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
+$0
+
+
+#ifdef __cplusplus
+}
+#endif
+
+
+#endif /* __$1`(upcase (file-name-nondirectory (file-name-sans-extension buffer-file-name)))`_H */

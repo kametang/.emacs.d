@@ -41,6 +41,15 @@
 (add-hook 'c-mode-hook #'lsp-cquery-enable)
 
 
+;;; -------------------------------------------------------------- HIGHLIGHT --
+(add-hook 'c-mode-hook
+	  #'(lambda ()
+	      (interactive)
+	      (highlight-regexp "/\\* -+ .+ -- \\*/" 'hi-green) ;; Chapter
+	      (highlight-regexp "/\\* >===== .+ =====< \\*/"
+				'hi-blue) ;; Section
+	      ))
+
 ;; Provide
 (provide 'c-lang)
 ;;; c-lang.el ends here
