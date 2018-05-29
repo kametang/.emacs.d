@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: entry-comment
+# key: !
+# --
+/*!< $1 */

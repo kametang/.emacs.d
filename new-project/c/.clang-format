@@ -1,10 +1,10 @@
-BasedOnStyle: Google
-AccessModifierOffset: 2
+BasedOnStyle: LLVM
+AccessModifierOffset: 0
 AlignAfterOpenBracket: Align
 AlignConsecutiveAssignments: true
 AlignConsecutiveDeclarations: true
 AlignEscapedNewlines: Right
-AlignOperands: true
+AlignOperands: false
 AlignTrailingComments: true
 AllowAllParametersOfDeclarationOnNextLine: false
 AllowShortBlocksOnASingleLine: false
@@ -31,10 +31,10 @@ BraceWrapping:
     AfterObjCDeclaration: true
     AfterStruct: true
     AfterUnion: true
-    AfterExternBlock: true
+    AfterExternBlock: false
     BeforeCatch: true
     BeforeElse: true
-    IndentBraces: true
+    IndentBraces: false
     SplitEmptyFunction: false
     SplitEmptyRecord: false
     SplitEmptyNamespace: false
@@ -54,7 +54,8 @@ FixNamespaceComments: true
 IncludeBlocks: Regroup
 IndentCaseLabels: true
 IndentWidth: 4
-IndentWrappedFunctionNames: false
+IndentWrappedFunctionNames: true
+IndentPPDirectives: None
 KeepEmptyLinesAtTheStartOfBlocks: false
 Language: Cpp
 MaxEmptyLinesToKeep: 2
@@ -68,13 +69,12 @@ SpaceAfterTemplateKeyword: false
 SpaceBeforeAssignmentOperators: true
 SpaceBeforeParens: ControlStatements
 SpaceInEmptyParentheses: false
-SpacesBeforeTrailingComments: 2
+SpacesBeforeTrailingComments: 4
 SpacesInAngles: false
 SpacesInCStyleCastParentheses: false
 SpacesInContainerLiterals: false
 SpacesInParentheses: false
 SpacesInSquareBrackets: false
-Standard: Auto
-TabWidth: 4
+Standard: Cpp11
 UseTab: Never
 

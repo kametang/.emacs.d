@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: elytone-licence
+# key: el
+# expand-env: ((yas-indent-line 'fixed))
+# --
+/******************************************************************************
+ *      Copyright(c) 2016-2018 Elytone Electronic Co.Ltd All rights reserved.
+ *
+ *      This is unpublished proprietary source code of
+ * 	Elytone Electroic Co.,Ltd.
+ *
+ *      The copyright notice above does not evidence any actual or intended
+ *      publication of such source code.
+ ******************************************************************************
+ */
+ $0

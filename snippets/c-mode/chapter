@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: chapter
+# key: --
+# --
+/* ${1:$(make-string (- 69 (string-width yas-text)) ?-)} ${1:$$(upcase yas-text)} -- */
