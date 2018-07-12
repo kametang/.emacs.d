@@ -19,6 +19,10 @@
 (require 'lisp-extra-font-lock)
 (add-hook 'emacs-lisp-mode-hook #'lisp-extra-font-lock-mode)
 
+
+;;; --------------------------------------------------------------- FLYCHECK --
+(setq flycheck-emacs-lisp-load-path 'inherit)
+
 ;; Provide
 (provide 'elisp-lang)
 ;;; elisp-lang.el ends here

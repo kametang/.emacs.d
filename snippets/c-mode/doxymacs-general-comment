@@ -2,6 +2,5 @@
 # name: doxymacs-general-comment
 # key: @
 # --
-/**
- * @brief ${1:Description}$0
+/** @brief ${1:Description}$0
  */

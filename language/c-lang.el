@@ -23,12 +23,12 @@
 	      (local-set-key (kbd "RET")
 			     (lambda ()
 			       (interactive)
-			       (if (or (nth 4
-					    (syntax-ppss))
-				       (nth 1
-					    (syntax-ppss)))
+			       (if (nth 4
+					(syntax-ppss))
 				   (c-indent-new-comment-line)
-				 (newline))))))
+				 (indent-new-comment-line))))
+	      (local-set-key (kbd "M-RET")
+			     #'c-indent-new-comment-line)))
 
 ;;; ----------------------------------------------------------------- CQUERY --
 (require 'cquery)
@@ -42,7 +42,7 @@
 
 
 ;;; -------------------------------------------------------------- HIGHLIGHT --
-(add-hook 'c-mode-hook
+(add-hook 'hi-lock-mode-hook
 	  #'(lambda ()
 	      (interactive)
 	      (highlight-regexp "/\\* -+ .+ -- \\*/" 'hi-green) ;; Chapter
