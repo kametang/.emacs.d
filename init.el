@@ -127,9 +127,20 @@
  'preproc-font-lock ;; preprocess font lock
 
 
+ ;; -------------
+ ;; Language: Web
+ ;; -------------
+ 'lsp-vue ;; Vue
+ 'vue-mode ;; Vue
+ 'emmet-mode ;; Emmet
+ 'prettier-js ;; Prettier
+
  ;; -------
  ;; Archive
  ;; -------
+ ;; 'lsp-typescript ;; TypeScript
+ ;; 'lsp-javascript-typescript
+ ;; 'lsp-javascript-flow ;; Javascript
  ;;'smartparens	       ;; Parens opreation
  ;; 'iedit		       ;; Ctrl-D
  ;; 'aggressive-indent    ;; Auto Indent
@@ -145,7 +156,7 @@
 ;;; --------------------------------------------------- PACKAGE NON OFFICIAL --
 (add-to-list 'load-path
 	     (expand-file-name "nonofficial/doxymacs" user-emacs-directory))
-(load "doxymacs.el")
+(require 'doxymacs)
 
 
 ;;; ---------------------------------------------------------------- GENERAL --
@@ -204,11 +215,10 @@
 (require 'powerline)
 (powerline-center-theme)
 (global-hl-line-mode t)
-(global-hi-lock-mode t)
-(diminish 'hi-lock-mode)
 (show-paren-mode t)
 (diminish 'abbrev-mode)
-
+(add-hook 'prog-mode-hook #'hi-lock-mode)
+(diminish 'hi-lock-mode)
 
 ;; -----
 ;; Fonts
@@ -323,22 +333,25 @@
 ;;; -------------------------------------------------------- PLUGIN: NEOTREE --
 (require 'neotree)
 
+
 ;;; -------------------------------------------------- PLUGIN: HUNGRY DELETE --
 (require 'hungry-delete)
 (global-hungry-delete-mode)
 (diminish 'hungry-delete-mode)
 
+
 ;;; ---------------------------------------------- PLUGIN: RAINBOW DELIMITER --
 (require 'rainbow-delimiters)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
 
 ;;; -------------------------------------------------------- PLUGIN: DIFF HL --
 (require 'diff-hl)
 (global-diff-hl-mode)
 
+
 ;;; ----------------------------------------------------------- PLUGIN: MWIM --
 (require 'mwim)
-
 
 
 ;;; ------------------------------------------------------ PLUGIN: MIC-PAREN --
@@ -379,6 +392,25 @@
       (comment-line 1)
       (forward-line -1))))
 
+;; ---------
+;; Show PPSS
+;; ---------
+(defun umkm/show-ppss ()
+  "Show PPSS."
+  (interactive)
+  (message "%s"
+	   (syntax-ppss)))
+
+
+;; ------------
+;; Reset Screen
+;; ------------
+(defun umkm/reset-screen ()
+  "Reset Screen."
+  (interactive)
+  (keyboard-escape-quit)
+  (hi-lock-mode))
+
 ;;; -------------------------------------------------------------- KEY BINDS --
 ;; Emacs Global Operation
 (bind-key* "M-/"
@@ -417,6 +449,7 @@
 (bind-key* "C-x C-r" #'anzu-query-replace-at-cursor)
 (bind-key* "C-=" #'er/expand-region)
 (bind-key* "M-=" #'er/expand-region)
+(bind-key* "<M-delete>" #'kill-word)
 
 ;; Jump
 (bind-key* "<home>" #'mwim-beginning-of-code-or-line-or-comment)
@@ -438,8 +471,10 @@
 (bind-key* "C-_" #'umkm/comment)
 
 ;; Clear
-(bind-key* "<insert>" #'keyboard-escape-quit)
-(bind-key* "<insertchar>" #'keyboard-escape-quit)
+;; (bind-key* "<insert>" #'keyboard-escape-quit)
+;; (bind-key* "<insertchar>" #'keyboard-escape-quit)
+(bind-key* "<insert>" #'umkm/reset-screen)
+(bind-key* "<insertchar>" #'umkm/reset-screen)
 
 ;; Panel
 (bind-key* "<f8>" #'neotree-toggle)
@@ -448,15 +483,16 @@
 ;;; ------------------------------------------------------- LANGUAGE SUPPORT --
 (add-to-list 'load-path
 	     (expand-file-name "language" user-emacs-directory))
-(load "elisp-lang.el")
-(load "cmake-lang.el")
-(load "c-lang.el")
+(require 'elisp-lang)
+(require 'cmake-lang)
+(require 'c-lang)
+(require 'vue-lang)
 
 
 ;;; ------------------------------------------------------------ NEW PROJECT --
 (add-to-list 'load-path
 	     (expand-file-name "new-project" user-emacs-directory))
-(load "new-project.el")
+(require 'new-project)
 
 ;;; ------------------------------------------------------------------- TEST --
 

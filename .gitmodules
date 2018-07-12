@@ -1,3 +1,0 @@
-[submodule "third-party/cquery"]
-	path = third-party/cquery
-	url = https://github.com/cquery-project/cquery.git

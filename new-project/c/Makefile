@@ -1,9 +1,12 @@
-.PHONY=all cmake
+.PHONY=all clean
 
-all: cmake
+all: build
 	$(MAKE) -C build
 
-cmake:
+clean:
+	$(MAKE) -C build clean
+
+build: CMakeLists.txt
 	mkdir -p build
 	-rm -rf build/*
 	cd build && cmake ../
