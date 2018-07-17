@@ -23,6 +23,6 @@
   (if (and return-name
 	   (and (not (string= return-name "void")) (not (string= return-name "define"))))
       (progn
-	(setq snippet-text (concat snippet-text (format "\n    @return %s ${%d: return description}\n" return-name idx)))))
+	(setq snippet-text (concat snippet-text (format "\n    @return ${%d: return description}\n" idx)))))
   (setq snippet-text (concat snippet-text " */$0"))
   (yas/expand-snippet snippet-text))

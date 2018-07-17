@@ -42,13 +42,13 @@
 
 
 ;;; -------------------------------------------------------------- HIGHLIGHT --
-(add-hook 'hi-lock-mode-hook
-	  #'(lambda ()
-	      (interactive)
-	      (highlight-regexp "/\\* -+ .+ -- \\*/" 'hi-green) ;; Chapter
-	      (highlight-regexp "/\\* >===== .+ =====< \\*/"
-				'hi-blue) ;; Section
-	      ))
+;; (add-hook 'hi-lock-mode-hook
+;;	  #'(lambda ()
+;;	      (interactive)
+;;	      (highlight-regexp "/\\* -+ .+ -- \\*/" 'hi-green) ;; Chapter
+;;	      (highlight-regexp "/\\* >===== .+ =====< \\*/"
+;;				'hi-blue) ;; Section
+;;	      ))
 
 ;; Provide
 (provide 'c-lang)

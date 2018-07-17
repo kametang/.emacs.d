@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: single-doxygen
+# key: //
+# --
+/** $1 */$0

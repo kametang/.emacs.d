@@ -3,5 +3,5 @@
 # key: ==
 # --
 /* `(make-string 73 ?#)` */
-/*     ${2:Chapter Name}${2:$(make-string (- 69 (string-width yas-text)) ? )} */
+/* ${1:$(make-string (/ (- 73 (string-width yas-text)) 2) ? )}${1:$$(capitalize yas-text)}${1:$(make-string (+ (/  (- 73 (string-width yas-text)) 2) (%  (- 73 (string-width yas-text)) 2)) ? )} */
 /* `(make-string 73 ?#)` */

@@ -1,6 +1,7 @@
 # -*- mode: snippet -*-
 # name: file-header
 # key: fh
+# expand-env: ((yas-indent-line 'fixed))
 # --
 /*************************************************************************/ /**
  * @file `(file-name-nondirectory (buffer-file-name))`

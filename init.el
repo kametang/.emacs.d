@@ -217,7 +217,7 @@
 (global-hl-line-mode t)
 (show-paren-mode t)
 (diminish 'abbrev-mode)
-(add-hook 'prog-mode-hook #'hi-lock-mode)
+;; (add-hook 'prog-mode-hook #'hi-lock-mode)
 (diminish 'hi-lock-mode)
 
 ;; -----
